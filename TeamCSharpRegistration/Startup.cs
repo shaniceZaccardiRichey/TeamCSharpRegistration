@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -24,6 +25,8 @@ namespace TeamCSharpRegistration
             services.AddControllersWithViews();
             services.AddRazorPages();
 
+            services.Configure<IdentityOptions>(options => options.Password.RequiredLength = 8);
+
             //services.AddDbContext<RegistrationDbContext>(options => options.UseMySql(Configuration.GetConnectionString("DefaultConnection")));
         }
 
@@ -45,6 +48,7 @@ namespace TeamCSharpRegistration
 
             app.UseRouting();
 
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Shanice\\Desktop\\Fall 2020 Coursework\\Systems Analysis & Design\\TeamCSharpRegistration-master\\TeamCSharpRegistration\\TeamCSharpRegistration.csproj": {}
+    "C:\\Users\\Shanice\\Desktop\\Fall 2020 Coursework\\Systems Analysis & Design\\TeamCSharpRegistration\\TeamCSharpRegistration\\TeamCSharpRegistration.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Shanice\\Desktop\\Fall 2020 Coursework\\Systems Analysis & Design\\TeamCSharpRegistration-master\\TeamCSharpRegistration\\TeamCSharpRegistration.csproj": {
+    "C:\\Users\\Shanice\\Desktop\\Fall 2020 Coursework\\Systems Analysis & Design\\TeamCSharpRegistration\\TeamCSharpRegistration\\TeamCSharpRegistration.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Shanice\\Desktop\\Fall 2020 Coursework\\Systems Analysis & Design\\TeamCSharpRegistration-master\\TeamCSharpRegistration\\TeamCSharpRegistration.csproj",
+        "projectUniqueName": "C:\\Users\\Shanice\\Desktop\\Fall 2020 Coursework\\Systems Analysis & Design\\TeamCSharpRegistration\\TeamCSharpRegistration\\TeamCSharpRegistration.csproj",
         "projectName": "TeamCSharpRegistration",
-        "projectPath": "C:\\Users\\Shanice\\Desktop\\Fall 2020 Coursework\\Systems Analysis & Design\\TeamCSharpRegistration-master\\TeamCSharpRegistration\\TeamCSharpRegistration.csproj",
+        "projectPath": "C:\\Users\\Shanice\\Desktop\\Fall 2020 Coursework\\Systems Analysis & Design\\TeamCSharpRegistration\\TeamCSharpRegistration\\TeamCSharpRegistration.csproj",
         "packagesPath": "C:\\Users\\Shanice\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Shanice\\Desktop\\Fall 2020 Coursework\\Systems Analysis & Design\\TeamCSharpRegistration-master\\TeamCSharpRegistration\\obj\\",
+        "outputPath": "C:\\Users\\Shanice\\Desktop\\Fall 2020 Coursework\\Systems Analysis & Design\\TeamCSharpRegistration\\TeamCSharpRegistration\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Microsoft\\Xamarin\\NuGet\\"

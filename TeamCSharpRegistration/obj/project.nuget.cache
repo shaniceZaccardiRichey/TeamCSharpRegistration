@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "JKPkcpdv8GR3mWnRxzbip2XFgaxLnb4ZrIm+J3dJgP5ShC1HHC3u7VgUeUNH+yjYqGetjLcjLhK5Rd7b0lTvEw==",
+  "dgSpecHash": "LkNXR9t3K9CLAu0qBuVm2n9mqAiefBFTrtQIABOasvMOD+qczOHlLDrN8seScExBIs9f7qOo3/n7X/YZfeTvaQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Shanice\\Desktop\\Fall 2020 Coursework\\Systems Analysis & Design\\TeamCSharpRegistration-master\\TeamCSharpRegistration\\TeamCSharpRegistration.csproj",
+  "projectFilePath": "C:\\Users\\Shanice\\Desktop\\Fall 2020 Coursework\\Systems Analysis & Design\\TeamCSharpRegistration\\TeamCSharpRegistration\\TeamCSharpRegistration.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Shanice\\.nuget\\packages\\microsoft.aspnetcore.cryptography.internal\\3.1.8\\microsoft.aspnetcore.cryptography.internal.3.1.8.nupkg.sha512",
     "C:\\Users\\Shanice\\.nuget\\packages\\microsoft.aspnetcore.cryptography.keyderivation\\3.1.8\\microsoft.aspnetcore.cryptography.keyderivation.3.1.8.nupkg.sha512",
