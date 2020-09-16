@@ -7,14 +7,10 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace TeamCSharpRegistration.Controllers
 {
-    public class CatalogController : Controller
+    public class ScheduleController : Controller
     {
+        [Authorize]
         public IActionResult Index()
-        {
-            return View();
-        }
-        
-        public IActionResult Browse()
         {
             return View();
         }
