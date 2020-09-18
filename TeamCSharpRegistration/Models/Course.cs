@@ -8,20 +8,26 @@ namespace TeamCSharpRegistration.Models
     public class Course
     {
         public int ID { get; set; }
+        public string Department { get; set; }
+        public int Number { get; set; }
         public string Title { get; set; }
-        public int CreditHours { get; set; }
         public string Description { get; set; }
+        public int CreditHours { get; set; }
+        public int LectureHours { get; set; } //nullable
+        
 
         public Course()
         {
        
         }
 
-        public Course(string title, int creditHours, string description)
+        public Course(string department, int number, string title, string description, int creditHours)
         {
+            Department = department;
+            Number = number;
             Title = title;
-            CreditHours = creditHours;
             Description = description;
+            CreditHours = creditHours;
         }
     }
 }
