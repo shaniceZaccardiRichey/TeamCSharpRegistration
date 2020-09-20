@@ -13,7 +13,7 @@ namespace TeamCSharpRegistration.Models
         public string LastName { get; set; }
         public string Email { get; set; }
         public int Phone { get; set; }
-        public int CampusID { get; set; }
+        public Campus CampusID { get; set; } //foreign key
         public string Department { get; set; }
 }
 }

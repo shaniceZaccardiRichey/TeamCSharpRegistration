@@ -7,7 +7,7 @@ namespace TeamCSharpRegistration.Models
 {
     public class Course
     {
-        public int ID { get; set; }
+        public int ID { get; set; } //primary key
         public string Department { get; set; }
         public int Number { get; set; }
         public string Title { get; set; }

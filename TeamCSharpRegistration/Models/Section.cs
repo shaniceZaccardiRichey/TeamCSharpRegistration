@@ -10,9 +10,9 @@ namespace TeamCSharpRegistration.Models
         public int ID { get; set; }
         public string Number { get; set; }
         public int CRN { get; set; }
-        public int CourseID { get; set; }
+        public Course CourseID { get; set; } //foreign key
         public int InstructorID { get; set; } //nullable
-        public int CampusID { get; set; }
+        public Campus CampusID { get; set; } //foreign key
         public string Building { get; set; } //nullable
         public string Room { get; set; } //nullable
         public string Type { get; set; }

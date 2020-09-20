@@ -8,9 +8,9 @@ namespace TeamCSharpRegistration.Models
     public class Meeting
     {
         public int ID { get; set; }
-        public int SectionID { get; set; }
+        public Section SectionID { get; set; } //foreign key
         public string Type { get; set; }
-        public int CampusID { get; set; }
+        public Campus CampusID { get; set; } //foreign key
         public string Building { get; set; } //nullable
         public string Room { get; set; } //nullable
         public DateTime StartDate { get; set; }
