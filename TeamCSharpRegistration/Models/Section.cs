@@ -7,6 +7,25 @@ namespace TeamCSharpRegistration.Models
 {
     public class Section
     {
+        public Section(int iD, string number, int cRN, Course courseID, int instructorID, Campus campusID, string building, string room, string type, DateTime startDate, DateTime endDate, int seats, int studentsEnrolled, string scheduleType, string notes)
+        {
+            ID = iD;
+            Number = number;
+            CRN = cRN;
+            CourseID = courseID;
+            InstructorID = instructorID;
+            CampusID = campusID;
+            Building = building;
+            Room = room;
+            Type = type;
+            StartDate = startDate;
+            EndDate = endDate;
+            Seats = seats;
+            StudentsEnrolled = studentsEnrolled;
+            ScheduleType = scheduleType;
+            Notes = notes;
+        }
+
         public int ID { get; set; }
         public string Number { get; set; }
         public int CRN { get; set; }
@@ -24,4 +43,5 @@ namespace TeamCSharpRegistration.Models
         public string Notes { get; set; }
            
     }
+
 }
