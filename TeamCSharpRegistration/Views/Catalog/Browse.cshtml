@@ -7,7 +7,7 @@
     List<Section> sections = new List<Section>();
     List<Meeting> meetings = new List<Meeting>();
 
-    courses.Add(new Course(0, "MTH", "020", "Pre Algebra", "This course is for students who need to review the basic fundamentals of mathematics. Topics include operations on whole numbers, fractions, decimals, percents, signed numbers, word problem applications and an introduction to algebra.", 3,3));
+    courses.Add(new Course(0, "MTH", "020", "Pre Algebra", "This course is for students who need to review the basic fundamentals of mathematics. Topics include operations on whole numbers, fractions, decimals, percents, signed numbers, word problem applications and an introduction to algebra.", 3, 3));
     courses.Add(new Course(1, "MTH", "050", "Mathematical Literacy", "Mathematical Literacy will provide students with the skills and conceptual understanding to succeed in college-level mathematics courses. The course will help students develop conceptual understanding and acquire multiple strategies for solving application problems. It contains such topics as numeracy, proportional reasoning, algebraic reasoning, probability, sets, interpreting tables and graphs, and graphs of linear equations. Prerequisites: MTH 020 with grade of \"C\" or higher or satisfactory score on placement test, and Reading Proficiency.", 3, 3));
     courses.Add(new Course(2, "MTH", "108", "Elementary Applied Mathematics", "This course will include a review of fractions, decimals and percents. Topics may include ratios, proportions, measurements, metrics, powers, roots, simple equations, estimation, graphs, and applications relevant to many Associate in Applied Science programs. Prerequisites: MTH 020 with a grade of \"C\" or better or satisfactory score on placement test and Reading Proficiency. All prerequisite courses must have been completed within the last 3 years. ", 3, 3));
 
@@ -16,14 +16,13 @@
 
 }
 <style>
-    .course-catalog-table > tr > td{
-
+    .course-catalog-table > tr > td {
     }
+
     .course-catalog-table td, .course-catalog-table th {
         padding-left: 0.25em;
         padding-right: 0.25em;
     }
-
 </style>
 <h1>Welcome to the course catalog!</h1>
 
@@ -38,15 +37,16 @@
         </tr>
     </thead>
     <tbody>
-        @for (int i = 0; i < courses.Count; i++) {
+        @for (int i = 0; i < courses.Count; i++)
+        {
             <tr>
                 <td>@courses[i].Title</td>
                 <td>@courses[i].getDeptAndNumber()</td>
-                <td>LO, RE, MI, PS, UM</td>  
+                <td>LO, RE, MI, PS, UM</td>
                 <td class="text-center">MTWRFSU</td>
                 <td>@courses[i].CreditHours</td>
-  
-              </tr>
+
+            </tr>
         }
     </tbody>
 </table>
