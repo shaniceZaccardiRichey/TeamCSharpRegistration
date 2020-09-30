@@ -5,9 +5,27 @@ using System.Threading.Tasks;
 
 namespace TeamCSharpRegistration.Models
 {
+    // Create model and define properties - Shanice
     public class Meeting
     {
-        public Meeting(int iD, Section sectionID, string type, Campus campusID, string building, string room, DateTime startDate, DateTime endDate, DateTime startTime, DateTime endTime, string day)
+        public int ID { get; set; }
+        public string Type { get; set; }
+        public string Building { get; set; } //nullable
+        public string Room { get; set; } //nullable
+        public DateTime StartDate { get; set; }
+        public DateTime EndDate { get; set; }
+        public DateTime StartTime { get; set; }
+        public DateTime EndTime { get; set; }
+        public string Day { get; set; }
+        // Establish foreign keys - Shanice
+        public int SectionID { get; set; } 
+        public Section Section { get; set; }
+        public int CampusID { get; set; } 
+        public Campus Campus { get; set; }
+
+
+        //Create constructor - Marshall
+        public Meeting(int iD, int sectionID, string type, int campusID, string building, string room, DateTime startDate, DateTime endDate, DateTime startTime, DateTime endTime, string day)
         {
             ID = iD;
             SectionID = sectionID;
@@ -22,16 +40,5 @@ namespace TeamCSharpRegistration.Models
             Day = day;
         }
 
-        public int ID { get; set; }
-        public Section SectionID { get; set; } //foreign key
-        public string Type { get; set; }
-        public Campus CampusID { get; set; } //foreign key
-        public string Building { get; set; } //nullable
-        public string Room { get; set; } //nullable
-        public DateTime StartDate { get; set; }
-        public DateTime EndDate { get; set; }
-        public DateTime StartTime { get; set; }
-        public DateTime EndTime { get; set; }
-        public string Day { get; set; }
     }
 }

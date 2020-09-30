@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 
 namespace TeamCSharpRegistration.Models
 {
+    // Create model and define properties - Shanice
     public class Instructor
     {
         public int ID { get; set; }
@@ -13,7 +14,9 @@ namespace TeamCSharpRegistration.Models
         public string LastName { get; set; }
         public string Email { get; set; }
         public int Phone { get; set; }
-        public Campus CampusID { get; set; } //foreign key
         public string Department { get; set; }
-}
+        // Establish foreign key - Shanice
+        public int CampusID { get; set; } 
+        public Campus Campus { get; set; }
+    }
 }

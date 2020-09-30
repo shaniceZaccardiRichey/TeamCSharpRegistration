@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 
 namespace TeamCSharpRegistration.Models
 {
+    // Create model and define properties - Shanice
     public class Course
     {
         public int ID { get; set; } //primary key
@@ -14,8 +15,8 @@ namespace TeamCSharpRegistration.Models
         public string Description { get; set; }
         public int CreditHours { get; set; }
         public int LectureHours { get; set; } //nullable
-        
 
+        //Create constructors - Marshall
         public Course()
         {
        
@@ -40,6 +41,8 @@ namespace TeamCSharpRegistration.Models
             CreditHours = creditHours;
             LectureHours = lectureHours;
         }
+
+        // getDeptAndNumber and getCampuses methods - Marshall
         public string getDeptAndNumber()
         {
             return Department + " " + Number;
