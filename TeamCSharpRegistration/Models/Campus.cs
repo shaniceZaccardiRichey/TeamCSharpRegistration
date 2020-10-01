@@ -11,8 +11,8 @@ namespace TeamCSharpRegistration.Models
         public int ID { get; set; } //primary key
         public string Code { get; set; }
         public string Name { get; set; }
-        public string Address { get; set; } //nullable
-        public string Phone { get; set; } //nullable
+        public string? Address { get; set; } //nullable
+        public string? Phone { get; set; } //nullable
 
         //Create constructor - Marshall
         public Campus(int iD, string code, string name, string address, string phone)
