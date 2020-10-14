@@ -22,6 +22,7 @@ namespace TeamCSharpRegistration.Data
         {
             base.OnModelCreating(modelBuilder);
 
+            // Shanice - Populated OnBuilder with course data
             modelBuilder.Entity<Course>().HasData(
 
                 new Course { 
