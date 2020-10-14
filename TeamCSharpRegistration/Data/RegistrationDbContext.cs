@@ -10,6 +10,7 @@ using TeamCSharpRegistration.Models;
 
 namespace TeamCSharpRegistration.Data
 {
+    // Shanice - Setup DbContext for Entity
     public class RegistrationDbContext : IdentityDbContext<IdentityUser>
     {
         public DbSet<Course> Courses { get; set; }

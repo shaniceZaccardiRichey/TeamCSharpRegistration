@@ -11,13 +11,14 @@ namespace TeamCSharpRegistration.Controllers
 {
     public class CatalogController : Controller
     {
+        // Shanice -Setup Controller to use Entity context
         private RegistrationDbContext context { get; set; }
         public CatalogController(RegistrationDbContext ctx)
         {
             context = ctx;
         }
 
-
+         // Shanice - Connected entity to browse view
         public IActionResult Browse()
         {
             var courses = context.Courses
