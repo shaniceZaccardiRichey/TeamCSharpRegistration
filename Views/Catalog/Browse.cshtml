@@ -1,0 +1,38 @@
+﻿@model List<Course>
+
+<!--Marshall - Provided styling for table.-->
+<style>
+    .course-catalog-table > tr > td {
+    }
+
+    .course-catalog-table td, .course-catalog-table th {
+        padding-left: 0.25em;
+        padding-right: 0.25em;
+    }
+</style>
+<h1>Welcome to the course catalog!</h1>
+
+<!-- Shanice - Setup course table using List passed by Entity to 
+                verify connection  of front and back end.-->
+<table class="course-catalog-table">
+    <thead>
+        <tr>
+            <th>Course Name</th>
+            <th>Course Number</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (Course course in Model)
+        {
+            <style>
+                table, th, td {
+                border: 1px solid black;
+                 }
+            </style>
+                    <tr>
+                        <td>@course.Title</td>
+                        <td>@course.Department @course.Number</td>
+                    </tr>}
+
+    </tbody>
+    </table>

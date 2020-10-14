@@ -1,0 +1,20 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+<div class="text-center">
+
+    <link rel="stylesheet" type="text/css" href="styles.css" />
+
+    <div>
+        <a asp-controller="Catalog" asp-action="Browse"><button style="background: url(https://stlcc.edu/images/resources/stlcc-white-logo-icon-hp-banner.jpg)" class="btn btn-primary">Course Catalog</button></a>
+    </div>
+
+    <div>
+        <a asp-controller="Schedule" asp-action="Index"><button style="background: url(https://stlcc.edu/images/resources/stlcc-white-logo-icon-hp-banner.jpg)" class="btn btn-primary">View My Schedule</button></a>
+    </div>
+
+    <div>
+        <a asp-controller="Audit" asp-action="Index"><button style="background: url(https://stlcc.edu/images/resources/stlcc-white-logo-icon-hp-banner.jpg)" class="btn btn-primary">Degree Audit</button></a>
+    </div>
+
+</div>
