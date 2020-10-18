@@ -338,3 +338,7 @@ ASALocalRun
 
 # BeatPulse healthcheck temp database
 healthchecksdb
+
+# Ignore VS options
+.vs/TeamCSharpRegistration/v15/.suo
+.vs/TeamCSharpRegistration/v16/.suo
