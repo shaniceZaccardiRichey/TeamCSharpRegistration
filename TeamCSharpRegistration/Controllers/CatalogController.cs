@@ -19,13 +19,16 @@ namespace TeamCSharpRegistration.Controllers
         }
 
          // Shanice - Connected entity to browse view
-        public IActionResult Browse()
+        public IActionResult Browse(string department)
         {
-            var courses = context.Courses
+            var courses = from c in context.Courses select c;
                 //.Include(c => c.Title)
-                .Where(d => d.Department == "IS")
-                .OrderBy(c => c.Department).ThenBy(c=> c.Number).ToList();
-            return View(courses);     
+            if (!String.IsNullOrEmpty(department))
+            {
+                courses = courses.Where(d => d.Department == department);
+            }
+            courses = courses.OrderBy(c => c.Department).ThenBy(c=> c.Number);
+            return View(courses.ToList());     
         }
         
     }
