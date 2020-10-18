@@ -23,7 +23,7 @@ namespace TeamCSharpRegistration.Controllers
         {
             var courses = context.Courses
                 //.Include(c => c.Title)
-                .OrderBy(c => c.Department).ToList();
+                .OrderBy(c => c.Department).ThenBy(c=> c.Number).ToList();
             return View(courses);     
         }
         
