@@ -1,0 +1,66 @@
+﻿@model List<Course>
+<!--Marshall - Provided styling for table.-->
+<style>
+    /* {
+        background-image: url("https://stlcc.edu/images/marketing/stlcc-primary-tag-logo-2color.png");
+        background-size: contain;
+    }*/
+    .course-catalog-table {
+        max-width: 800px;
+        width: 100%;
+        margin: 2em auto auto auto;
+        font-size: 1.15em;
+    }
+
+    body h1 {
+        margin: .5em;
+    }
+
+    header ~ .container {
+        padding: 0;
+    }
+
+    .course-catalog-table tr {
+        border-top: 1px solid #808080;
+        border-bottom: 1px solid #808080;
+    }
+
+    .course-catalog-table td {
+        font-weight: 600;
+    }
+
+    .course-catalog-table th {
+        font-weight: 700;
+        font-size: 1.3em;
+    }
+
+    .course-catalog-table td, .course-catalog-table th, .course-catalog-table tr {
+        padding-left: 0.25em;
+        padding-right: 0.25em;
+    }
+
+    .course-id-col {
+        text-align: right;
+    }
+</style>
+<h1>Course Catalog</h1>
+
+<!-- Shanice - Setup table to list department courses.-->
+<table class="course-catalog-table">
+    <thead>
+        <tr>
+            <th>Course Name</th>
+            <th class="course-id-col">Course Number</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (Course course in Model)
+        {
+            <tr>
+                <td>@course.Title</td>
+                <td class="course-id-col">@course.Department @course.Number</td>
+            </tr>
+        }
+
+    </tbody>
+</table>

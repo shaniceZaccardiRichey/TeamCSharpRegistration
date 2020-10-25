@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using TeamCSharpRegistration.Data;
+using TeamCSharpRegistration.Models;
 
 namespace TeamCSharpRegistration.Controllers
 {
@@ -18,9 +19,25 @@ namespace TeamCSharpRegistration.Controllers
             context = ctx;
         }
 
-         // Shanice - Connected entity to browse view
-        public IActionResult Browse(string department)
+         // Shanice - Connected entity to department view
+        public IActionResult Departments()
         {
+            List<Course> courses = new List<Course>();
+            List<string> departments = new List<string>();
+
+            courses = context.Courses.ToList();
+
+            foreach (Course course in courses)
+            {
+                if (!departments.Contains(course.Department))
+                {
+                    departments.Add(course.Department);
+                }
+            }
+
+            return View(departments);
+            
+            /*
             var courses = from c in context.Courses select c;
                 //.Include(c => c.Title)
             if (!String.IsNullOrEmpty(department))
@@ -28,7 +45,21 @@ namespace TeamCSharpRegistration.Controllers
                 courses = courses.Where(d => d.Department == department);
             }
             courses = courses.OrderBy(c => c.Department).ThenBy(c=> c.Number);
-            return View(courses.ToList());     
+            return View(courses.ToList());  
+            */
+        }
+
+        // Shanice - Connect entity to course view and finished connecting department view to courses view.
+        public IActionResult Courses(string department)
+        {
+            //department = "ENG";
+
+            List<Course> courses = new List<Course>();
+            courses = context.Courses
+                .Where(d => d.Department == department)
+                .ToList();
+
+            return View(courses);
         }
         
     }
