@@ -213,6 +213,39 @@ namespace TeamCSharpRegistration.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
+            modelBuilder.Entity("TeamCSharpRegistration.Models.Campus", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<string>("Address")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("Code")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("Phone")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.HasKey("ID");
+
+                    b.ToTable("Campus");
+
+                    b.HasData(
+                        new
+                        {
+                            ID = 1,
+                            Address = "online",
+                            Code = "ONL",
+                            Name = "Online",
+                            Phone = ""
+                        });
+                });
+
             modelBuilder.Entity("TeamCSharpRegistration.Models.Course", b =>
                 {
                     b.Property<int>("ID")
@@ -324,6 +357,131 @@ namespace TeamCSharpRegistration.Migrations
                         });
                 });
 
+            modelBuilder.Entity("TeamCSharpRegistration.Models.Instructor", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<int>("CampusID")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Department")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("Email")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("FirstName")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("LastName")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("MiddleName")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("Phone")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.HasKey("ID");
+
+                    b.HasIndex("CampusID");
+
+                    b.ToTable("Instructor");
+
+                    b.HasData(
+                        new
+                        {
+                            ID = 1,
+                            CampusID = 1,
+                            Department = "IS",
+                            Email = "dyezbick@stlcc.edu",
+                            FirstName = "Daniel",
+                            LastName = "Yezbick",
+                            Phone = "314-123-4567"
+                        });
+                });
+
+            modelBuilder.Entity("TeamCSharpRegistration.Models.Section", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<string>("Building")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<int>("CRN")
+                        .HasColumnType("int");
+
+                    b.Property<int>("CampusID")
+                        .HasColumnType("int");
+
+                    b.Property<int>("CourseID")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("EndDate")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<int>("InstructorID")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Notes")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("Number")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("Room")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("ScheduleType")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<int>("Seats")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("StartDate")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<int>("StudentsEnrolled")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Type")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.HasKey("ID");
+
+                    b.HasIndex("CampusID");
+
+                    b.HasIndex("CourseID");
+
+                    b.HasIndex("InstructorID");
+
+                    b.ToTable("Section");
+
+                    b.HasData(
+                        new
+                        {
+                            ID = 1,
+                            Building = "",
+                            CRN = 283746,
+                            CampusID = 1,
+                            CourseID = 1,
+                            EndDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            InstructorID = 1,
+                            Notes = "",
+                            Number = "111",
+                            Room = "",
+                            ScheduleType = "Online",
+                            Seats = 25,
+                            StartDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            StudentsEnrolled = 5,
+                            Type = "Online"
+                        });
+                });
+
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
                 {
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
@@ -371,6 +529,36 @@ namespace TeamCSharpRegistration.Migrations
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("TeamCSharpRegistration.Models.Instructor", b =>
+                {
+                    b.HasOne("TeamCSharpRegistration.Models.Campus", "Campus")
+                        .WithMany()
+                        .HasForeignKey("CampusID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("TeamCSharpRegistration.Models.Section", b =>
+                {
+                    b.HasOne("TeamCSharpRegistration.Models.Campus", "Campus")
+                        .WithMany()
+                        .HasForeignKey("CampusID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("TeamCSharpRegistration.Models.Course", "Course")
+                        .WithMany()
+                        .HasForeignKey("CourseID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("TeamCSharpRegistration.Models.Instructor", "Instructor")
+                        .WithMany()
+                        .HasForeignKey("InstructorID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

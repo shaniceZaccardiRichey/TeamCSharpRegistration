@@ -9,8 +9,8 @@ using TeamCSharpRegistration.Data;
 namespace TeamCSharpRegistration.Migrations
 {
     [DbContext(typeof(RegistrationDbContext))]
-    [Migration("20201011183132_OnBuilder-English1")]
-    partial class OnBuilderEnglish1
+    [Migration("20201025204316_DB reset migration")]
+    partial class DBresetmigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -215,6 +215,39 @@ namespace TeamCSharpRegistration.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
+            modelBuilder.Entity("TeamCSharpRegistration.Models.Campus", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<string>("Address")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("Code")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("Phone")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.HasKey("ID");
+
+                    b.ToTable("Campus");
+
+                    b.HasData(
+                        new
+                        {
+                            ID = 1,
+                            Address = "online",
+                            Code = "ONL",
+                            Name = "Online",
+                            Phone = ""
+                        });
+                });
+
             modelBuilder.Entity("TeamCSharpRegistration.Models.Course", b =>
                 {
                     b.Property<int>("ID")
@@ -293,6 +326,161 @@ namespace TeamCSharpRegistration.Migrations
                             LectureHours = 3,
                             Number = "205",
                             Title = "American Literature II"
+                        },
+                        new
+                        {
+                            ID = 6,
+                            CreditHours = 4,
+                            Department = "IS",
+                            Description = "Students in this course focus on completing the acquisition of the knowledge and skills for developing applications using Windows Forms, Windows Presentation Foundation (WPF) and the .NET Framework 4 in preparation for Microsoft's Microsoft Certified Technology Specialist (MCTS) .NET Framework 4, Windows Applications certification. Coursework will include developing Windows applications using the C# programming language to access data in Windows forms applications, create Windows services, utilize advanced user interface techniques, implement n-tier applications and implement web applications.",
+                            LectureHours = 4,
+                            Number = "283",
+                            Title = "C# Programming III"
+                        },
+                        new
+                        {
+                            ID = 7,
+                            CreditHours = 4,
+                            Department = "IS",
+                            Description = "C# Programming II focuses on broadening and deepening the student's understanding of Object Oriented Programming (OOP) as implemented in the C# language. Core elements include creating and deploying Windows programs, form application basics, building user interfaces using basic techniques, .NET fundamentals, basic coding within the .NET framework, design and development of classes, overloading and overriding methods and constructors, inheritance, encapsulation, and interfaces. Course objectives align with the Microsoft Certified Technical Specialist (MCTS) .NET Framework, Windows Applications certification.",
+                            LectureHours = 4,
+                            Number = "253",
+                            Title = "C# Programming II"
+                        },
+                        new
+                        {
+                            ID = 8,
+                            CreditHours = 4,
+                            Department = "IS",
+                            Description = "This course emphasizes software development problem-solving methodologies utilizing current software design and development tools and techniques. Topics include data structures, program design, pseudocode, language control structures, procedures and functions, error handling and Object Oriented design using classes. Assignments will be developed in the C# language using the current development environment.",
+                            LectureHours = 4,
+                            Number = "153",
+                            Title = "C# Programming I"
+                        });
+                });
+
+            modelBuilder.Entity("TeamCSharpRegistration.Models.Instructor", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<int>("CampusID")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Department")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("Email")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("FirstName")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("LastName")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("MiddleName")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("Phone")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.HasKey("ID");
+
+                    b.HasIndex("CampusID");
+
+                    b.ToTable("Instructor");
+
+                    b.HasData(
+                        new
+                        {
+                            ID = 1,
+                            CampusID = 1,
+                            Department = "IS",
+                            Email = "dyezbick@stlcc.edu",
+                            FirstName = "Daniel",
+                            LastName = "Yezbick",
+                            Phone = "314-123-4567"
+                        });
+                });
+
+            modelBuilder.Entity("TeamCSharpRegistration.Models.Section", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<string>("Building")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<int>("CRN")
+                        .HasColumnType("int");
+
+                    b.Property<int>("CampusID")
+                        .HasColumnType("int");
+
+                    b.Property<int>("CourseID")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("EndDate")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<int>("InstructorID")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Notes")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("Number")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("Room")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("ScheduleType")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<int>("Seats")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("StartDate")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<int>("StudentsEnrolled")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Type")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.HasKey("ID");
+
+                    b.HasIndex("CampusID");
+
+                    b.HasIndex("CourseID");
+
+                    b.HasIndex("InstructorID");
+
+                    b.ToTable("Section");
+
+                    b.HasData(
+                        new
+                        {
+                            ID = 1,
+                            Building = "",
+                            CRN = 283746,
+                            CampusID = 1,
+                            CourseID = 1,
+                            EndDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            InstructorID = 1,
+                            Notes = "",
+                            Number = "111",
+                            Room = "",
+                            ScheduleType = "Online",
+                            Seats = 25,
+                            StartDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            StudentsEnrolled = 5,
+                            Type = "Online"
                         });
                 });
 
@@ -343,6 +531,36 @@ namespace TeamCSharpRegistration.Migrations
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("TeamCSharpRegistration.Models.Instructor", b =>
+                {
+                    b.HasOne("TeamCSharpRegistration.Models.Campus", "Campus")
+                        .WithMany()
+                        .HasForeignKey("CampusID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("TeamCSharpRegistration.Models.Section", b =>
+                {
+                    b.HasOne("TeamCSharpRegistration.Models.Campus", "Campus")
+                        .WithMany()
+                        .HasForeignKey("CampusID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("TeamCSharpRegistration.Models.Course", "Course")
+                        .WithMany()
+                        .HasForeignKey("CourseID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("TeamCSharpRegistration.Models.Instructor", "Instructor")
+                        .WithMany()
+                        .HasForeignKey("InstructorID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

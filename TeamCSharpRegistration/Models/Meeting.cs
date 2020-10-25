@@ -23,6 +23,10 @@ namespace TeamCSharpRegistration.Models
         public int CampusID { get; set; } 
         public Campus Campus { get; set; }
 
+        public Meeting()
+        {
+
+        }
 
         //Create constructor - Marshall
         public Meeting(int iD, int sectionID, string type, int campusID, string building, string room, DateTime startDate, DateTime endDate, DateTime startTime, DateTime endTime, string day)

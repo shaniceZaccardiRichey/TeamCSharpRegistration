@@ -1,11 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.ChangeTracking.Internal;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using TeamCSharpRegistration.Models;
 
 namespace TeamCSharpRegistration.Data
@@ -115,7 +111,51 @@ namespace TeamCSharpRegistration.Data
 
             );
 
-            
+            modelBuilder.Entity<Section>().HasData(
+                new Section
+                {
+                    ID = 1,
+                    Number = "111",
+                    CRN = 283746,
+                    CourseID = 1,
+                    InstructorID = 1,
+                    CampusID = 1,
+                    Building = "",
+                    Room = "",
+                    Type = "Online",
+                    StartDate = new DateTime(),
+                    EndDate = new DateTime(),
+                    Seats = 25,
+                    StudentsEnrolled = 5,
+                    ScheduleType = "Online",
+                    Notes = ""
+                }
+            );
+
+            modelBuilder.Entity<Campus>().HasData(
+               new Campus
+               {
+                   ID = 1,
+                   Code = "ONL",
+                   Name = "Online",
+                   Address = "online",
+                   Phone = ""
+               } 
+           );
+
+            modelBuilder.Entity<Instructor>().HasData(
+                new Instructor
+                {
+                    ID = 1,
+                    FirstName = "Daniel",
+                    LastName = "Yezbick",
+                    Email = "dyezbick@stlcc.edu",
+                    Phone = "314-123-4567",
+                    Department = "IS",
+                    CampusID = 1
+                }
+            );
+
         }
 
     }

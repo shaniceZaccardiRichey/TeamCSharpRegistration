@@ -13,10 +13,17 @@ namespace TeamCSharpRegistration.Models
         public string MiddleName { get; set; }
         public string LastName { get; set; }
         public string Email { get; set; }
-        public int Phone { get; set; }
+        public string Phone { get; set; }
         public string Department { get; set; }
         // Establish foreign key - Shanice
         public int CampusID { get; set; } 
         public Campus Campus { get; set; }
+
+        public Instructor()
+        {
+
+        }
     }
+
+    
 }

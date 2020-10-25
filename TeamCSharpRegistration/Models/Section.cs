@@ -11,9 +11,12 @@ namespace TeamCSharpRegistration.Models
         public int ID { get; set; }
         public string Number { get; set; }
         public int CRN { get; set; }
-        public Course CourseID { get; set; } //foreign key
+        public int CourseID { get; set; } //foreign key
+        public Course Course { get; set; }
         public int InstructorID { get; set; } //nullable
-        public Campus CampusID { get; set; } //foreign key
+        public Instructor Instructor { get; set; }
+        public int CampusID { get; set; } //foreign key
+        public Campus Campus { get; set; }
         public string Building { get; set; } //nullable
         public string Room { get; set; } //nullable
         public string Type { get; set; }
@@ -24,9 +27,12 @@ namespace TeamCSharpRegistration.Models
         public string ScheduleType { get; set; }
         public string Notes { get; set; }
 
+        public Section() { 
+        
+        }
 
         //Create constructor - Marshall
-        public Section(int iD, string number, int cRN, Course courseID, int instructorID, Campus campusID, string building, string room, string type, DateTime startDate, DateTime endDate, int seats, int studentsEnrolled, string scheduleType, string notes)
+        public Section(int iD, string number, int cRN, int courseID, int instructorID, int campusID, string building, string room, string type, DateTime startDate, DateTime endDate, int seats, int studentsEnrolled, string scheduleType, string notes)
         {
             ID = iD;
             Number = number;
