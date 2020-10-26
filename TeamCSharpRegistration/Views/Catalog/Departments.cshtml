@@ -43,6 +43,18 @@
     .course-id-col {
         text-align: right;
     }
+
+    /* Shanice - Styled links on Department view.*/
+    td a {
+        color: black;
+        display: flex;
+        text-decoration: none !important;
+    }
+
+    td a span {
+        flex: 1;
+    }
+
 </style>
 <h1>Course Catalog</h1>
 
@@ -59,7 +71,12 @@
         @foreach (string department in Model)
         {
             <tr>
-                <td><a asp-controller="Catalog" asp-action="Courses" asp-route-department="@department">@department</a></td>
+                <td> 
+                    <a asp-controller="Catalog" asp-action="Courses" asp-route-department="@department">
+                        <span>@department</span>
+                        🡢 <!-- Shanice - added arrow for styling. -->
+                    </a>
+                </td>
             </tr>
         }
 
