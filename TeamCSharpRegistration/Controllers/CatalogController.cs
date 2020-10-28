@@ -64,6 +64,14 @@ namespace TeamCSharpRegistration.Controllers
 
             return View(courses);
         }
-        
+
+        public IActionResult Sections(string course)
+        {
+            ViewBag.course = course;
+
+            return View();
+        }
+
+
     }
 }
