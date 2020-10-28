@@ -65,11 +65,27 @@ namespace TeamCSharpRegistration.Controllers
             return View(courses);
         }
 
+        // Shanice - Setup routing for Sections and connected Entity.
         public IActionResult Sections(string course)
         {
             ViewBag.course = course;
 
-            return View();
+            List<Course> courses = new List<Course>();
+            courses = context.Courses
+                .Where(t => t.Title == course)
+                .ToList();
+
+            int courseID = courses[0].ID;
+
+            List<Section> sections = new List<Section>();
+
+            sections = context.Sections
+                .Where(c => c.CourseID == courseID)
+                .ToList();
+
+
+
+            return View(sections);
         }
 
 

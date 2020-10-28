@@ -10,6 +10,8 @@ namespace TeamCSharpRegistration.Data
     public class RegistrationDbContext : IdentityDbContext<IdentityUser>
     {
         public DbSet<Course> Courses { get; set; }
+        public DbSet<Section> Sections { get; set; }
+        
 
         public RegistrationDbContext(DbContextOptions<RegistrationDbContext> options) : base(options)
         {

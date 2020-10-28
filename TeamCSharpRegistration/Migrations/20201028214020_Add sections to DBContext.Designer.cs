@@ -2,15 +2,17 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using TeamCSharpRegistration.Data;
 
 namespace TeamCSharpRegistration.Migrations
 {
     [DbContext(typeof(RegistrationDbContext))]
-    partial class RegistrationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20201028214020_Add sections to DBContext")]
+    partial class AddsectionstoDBContext
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
