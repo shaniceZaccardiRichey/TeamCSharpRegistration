@@ -354,6 +354,286 @@ namespace TeamCSharpRegistration.Migrations
                             LectureHours = 4,
                             Number = "153",
                             Title = "C# Programming I"
+                        },
+                        new
+                        {
+                            ID = 9,
+                            CreditHours = 0,
+                            Department = "IS",
+                            Description = "Keyboarding is a skill-development course designed to introduce touch control of the keyboard using proper techniques. Emphasis is on learning the alphabetic, numeric, and symbol keys. Students learn basic techniques to build speed and accuracy. Satisfactory/Unsatisfactory grading.",
+                            LectureHours = 0,
+                            Number = "101",
+                            Title = "Keyboarding"
+                        },
+                        new
+                        {
+                            ID = 10,
+                            CreditHours = 3,
+                            Department = "IS",
+                            Description = "Keyboarding and Formatting is a skill-development course in which students utilize proper techniques to develop touch control of the keyboard and apply basic formatting skills to letters, memos, reports, and tables.",
+                            LectureHours = 3,
+                            Number = "102",
+                            Title = "Keyboarding and Formatting"
+                        },
+                        new
+                        {
+                            ID = 11,
+                            CreditHours = 0,
+                            Department = "IS",
+                            Description = "Students learn to produce high-quality business communications through proofreading for accuracy in mechanics, format, and content as well as edit documents for correctness, conciseness, and clarity. Prerequisites: IS 101 or IS 102 and Reading Proficiency.",
+                            LectureHours = 0,
+                            Number = "109",
+                            Title = "Proofreading and Editing"
+                        },
+                        new
+                        {
+                            ID = 12,
+                            CreditHours = 3,
+                            Department = "IS",
+                            Description = "Software and Hardware Architecture provides a survey of technical topics related to computer systems with emphasis on the relationships between hardware architecture and systems software. Binary and hexadecimal number systems, data representation, data structures, processor architecture, and operating systems functions and methods will be explored. Recommended Preparation: Basic computer literacy is expected. Prerequisites: MTH 160 or MTH 180 (can be taken concurrently), and Reading Proficiency.",
+                            LectureHours = 3,
+                            Number = "112",
+                            Title = "Software and Hardware Architecture"
+                        },
+                        new
+                        {
+                            ID = 13,
+                            CreditHours = 3,
+                            Department = "IS",
+                            Description = "This course explores the terminology and concepts of computers including file management, Internet browsers, and web page development. Students gain proficiency using productivity tools such as word processors, presentation software, electronic spreadsheets and electronic mail to solve problems, communicate, and manage information to make informed decisions. Students will also develop a computer application. Prerequisite: Reading Proficiency.",
+                            LectureHours = 3,
+                            Number = "116",
+                            Title = "Computer Literacy"
+                        },
+                        new
+                        {
+                            ID = 14,
+                            CreditHours = 0,
+                            Department = "IS",
+                            Description = "Introduction to Excel teaches the fundamentals of creating and managing Excel worksheets and workbooks. Topics include creating cells and ranges, creating tables, applying formulas and functions, and creating basic charts and objects to represent data visually. Prerequisites: Reading Proficiency.",
+                            LectureHours = 0,
+                            Number = "120",
+                            Title = "Introduction to Excel"
+                        },
+                        new
+                        {
+                            ID = 15,
+                            CreditHours = 3,
+                            Department = "IS",
+                            Description = "Windows is a skill-development course covering the Microsoft Windows operating system. Topics include file and folder management and organization, hardware management, software management, network connection, system customization, system optimization, and system security. Prerequisite: Reading Proficiency.",
+                            LectureHours = 3,
+                            Number = "122",
+                            Title = "Windows"
+                        },
+                        new
+                        {
+                            ID = 16,
+                            CreditHours = 0,
+                            Department = "IS",
+                            Description = "Students learn the basic concepts of the Windows environment and how to create and manage files within the organizational structure of that environment. The desktop, accessories, and navigational tools will also be covered.",
+                            LectureHours = 0,
+                            Number = "123",
+                            Title = "Introduction to Windows"
+                        },
+                        new
+                        {
+                            ID = 17,
+                            CreditHours = 0,
+                            Department = "IS",
+                            Description = "HTML covers the essentials of creating web pages using Hypertext Markup Language (HTML) and Cascading Style Sheets (CSS). Students will create and edit web pages which include text, hyperlinks, images, and tables. HTML and CSS will be used to control page appearance and layout. Recommended preparation IS 123 or equivalent experience. Prerequisite: Reading Proficiency.",
+                            LectureHours = 0,
+                            Number = "129",
+                            Title = "HTML"
+                        },
+                        new
+                        {
+                            ID = 18,
+                            CreditHours = 3,
+                            Department = "IS",
+                            Description = "Hardware Support - CompTIA A+ Core 1 (Hardware) covers the theory and hands-on skills necessary to pass the CompTIA A+ hardware (Core 1) exam. Topics covered include hardware fundamentals, networking, and security. Students will learn basic operating system functionality and troubleshooting methodology, the practice of proper safety procedures, and how to effectively interact with customers and co-workers. Recommended Preparation: Basic computer literacy is expected. Prerequisite: Reading Proficiency.",
+                            LectureHours = 3,
+                            Number = "130",
+                            Title = "Hardware Support - CompTIA A+ Core 1 (Hardware)"
+                        },
+                        new
+                        {
+                            ID = 19,
+                            CreditHours = 0,
+                            Department = "IS",
+                            Description = "Internet Fundamentals provides practical information regarding Internet practices and safety. Searching, validating, and securely passing information to and from the Internet are emphasized. Identifying and mitigating common threats such as spyware, viruses, Trojan Horses, and identity theft are covered. Prerequisites: Reading Proficiency.",
+                            LectureHours = 0,
+                            Number = "136",
+                            Title = "Internet Fundamentals"
+                        },
+                        new
+                        {
+                            ID = 20,
+                            CreditHours = 3,
+                            Department = "IS",
+                            Description = "Web Publishing introduces current industry standards for web development and design techniques that include the use of Hypertext Markup Language (HTML), Cascading Style Sheets (CSS), and an introduction to JavaScript. Topics such as web development process, accessibility standards, platform standards, HTML editors and converters, Web 2.0 Technologies, performance issues, tables, forms, dynamic content, and web site management issues will be presented. Prerequisite: Reading Proficiency.",
+                            LectureHours = 3,
+                            Number = "139",
+                            Title = "Web Publishing"
+                        },
+                        new
+                        {
+                            ID = 21,
+                            CreditHours = 3,
+                            Department = "IS",
+                            Description = "Web Development I is an in-depth study of the development and implementation of engaging websites using current industry production tools. Accessibility, security, and website management issues will be addressed. Topics such as file formats, platform standards, user-centered navigation, dynamic content such as streaming video/audio, and search engine concepts will be presented. Prerequisites: IS 187 or IS 153, IS 139, IS 265 and Reading Proficiency.",
+                            LectureHours = 3,
+                            Number = "142",
+                            Title = "Web Development I"
+                        },
+                        new
+                        {
+                            ID = 22,
+                            CreditHours = 0,
+                            Department = "IS",
+                            Description = "This course covers software programs frequently used in the business environment. Word processing, spreadsheets, database management, and presentation software will be introduced. Prerequisites: IS 122 or IS 123 or IT 102 or equivalent experience.",
+                            LectureHours = 0,
+                            Number = "151",
+                            Title = "Computer Applications in Business"
+                        },
+                        new
+                        {
+                            ID = 23,
+                            CreditHours = 3,
+                            Department = "IS",
+                            Description = "This class is a continuation of Computer Applications in Business (IS 151). Software packages from these categories will be studied: spreadsheets, database management, word processing, and presentation software. Prerequisites: IS 151 and Reading Proficiency.",
+                            LectureHours = 3,
+                            Number = "152",
+                            Title = "Computer Applications in Business-Intermediate"
+                        },
+                        new
+                        {
+                            ID = 24,
+                            CreditHours = 0,
+                            Department = "IS",
+                            Description = "This course emphasizes software development problem-solving methodologies utilizing current software design and development tools and techniques. Topics include data structures, program design, pseudocode, language control structures, procedures and functions, error handling and Object Oriented design using classes. Assignments will be developed in the C# language using the current development environment. Prerequisite: Reading Proficiency.",
+                            LectureHours = 0,
+                            Number = "153",
+                            Title = "C# Programming I"
+                        },
+                        new
+                        {
+                            ID = 25,
+                            CreditHours = 0,
+                            Department = "PE",
+                            Description = "This course is an introductory course that focuses on fitness principles and exercise techniques used to develop strength, muscular endurance, flexibility, and cardio-respiratory fitness. A variety of physical activities and exercises will be introduced.",
+                            LectureHours = 0,
+                            Number = "109",
+                            Title = "Basic Fitness I"
+                        },
+                        new
+                        {
+                            ID = 26,
+                            CreditHours = 0,
+                            Department = "PE",
+                            Description = "This course provides physiological principles of cardio-pulmonary functions with practical application in administering this lifesaving technique and use of an automated external defibrillator. Certification through the American Red Cross adult, child and infant Cardiopulmonary Resuscitation (CPR) and Automated External Defibrillation (AED) available for those who meet course requirements. Addition fee is required to obtain certification.",
+                            LectureHours = 0,
+                            Number = "120",
+                            Title = "Community Red Cross CPR"
+                        },
+                        new
+                        {
+                            ID = 27,
+                            CreditHours = 0,
+                            Department = "PE",
+                            Description = "This course includes emergency recognition and first aid treatment for sudden illness and injuries with adult cardiopulmonary resuscitation (CPR) and automated external defibrillator (AED). First Aid and CPR/AED certification is available through the one of the following certifying agencies: American Red Cross, National Safety Council, or American Heart Association. This course may be taken to satisfy one credit hour of the physical education requirement. Prerequisite: Reading Proficiency.",
+                            LectureHours = 0,
+                            Number = "129",
+                            Title = "First Aid"
+                        },
+                        new
+                        {
+                            ID = 28,
+                            CreditHours = 3,
+                            Department = "PE",
+                            Description = "This is an introduction to the concept of health being a foundation for positive movement throughout the life cycle. The course will explore the inter-relatedness of the body systems, the nature and communication of disease and the recovery process. Course topics will include healthy eating, fitness, sexuality, drugs, stress, and wellness. Prerequisite: Reading Proficiency.",
+                            LectureHours = 3,
+                            Number = "135",
+                            Title = "Health and Personal Hygiene"
+                        },
+                        new
+                        {
+                            ID = 29,
+                            CreditHours = 3,
+                            Department = "PE",
+                            Description = "This course includes an overview of stress and its impact on physical, mental, emotional, and spiritual health and wellness. Coping strategies, relaxation techniques, healthy eating behaviors, and physical activities for stress reduction will be explored. Prerequisite: Reading Proficiency.",
+                            LectureHours = 3,
+                            Number = "161",
+                            Title = "Stress Management"
+                        },
+                        new
+                        {
+                            ID = 30,
+                            CreditHours = 0,
+                            Department = "PE",
+                            Description = "This course focuses on the proper technique and attire, and the importance of cardiovascular fitness, weight control, and safety.",
+                            LectureHours = 0,
+                            Number = "173",
+                            Title = "Walking for Fitness"
+                        },
+                        new
+                        {
+                            ID = 31,
+                            CreditHours = 0,
+                            Department = "PE",
+                            Description = "This course is designed to introduce the beginner to a variety of basic weight training skills. Techniques focus on safe execution of weight lifting using pin-select weight equipment and free weights to develop strength, size, endurance, and flexibility of major muscle groups. Circuit training is introduced.",
+                            LectureHours = 0,
+                            Number = "177",
+                            Title = "Weight Training I"
+                        },
+                        new
+                        {
+                            ID = 32,
+                            CreditHours = 0,
+                            Department = "PE",
+                            Description = "This course focuses on advanced weight lifting techniques utilizing pin-select machines and free weights. Advanced level training programs for increased muscular development are designed. Circuit training is utilized. Prerequisite: PE 177 with a minimum grade of 'C'.",
+                            LectureHours = 0,
+                            Number = "178",
+                            Title = "Weight Training II"
+                        },
+                        new
+                        {
+                            ID = 33,
+                            CreditHours = 3,
+                            Department = "PE",
+                            Description = "This course focuses on the impact physical activity, healthy eating behaviors, weight management, stress management, substance abuse, sexually transmitted diseases and other relevant topics have on health and wellness. The development of an individualized wellness program enhances understanding of course concepts. Additional hours required. Prerequisite: Reading Proficiency.",
+                            LectureHours = 3,
+                            Number = "180",
+                            Title = "Wellness and Fitness Concepts"
+                        },
+                        new
+                        {
+                            ID = 34,
+                            CreditHours = 0,
+                            Department = "PE",
+                            Description = "This course is an introduction to Hatha Yoga (the Yoga of physical wellbeing), which includes basic poses (asanas), breathing techniques, meditation, and yoga philosophy. Active participation in these activities is designed to increase flexibility and balance, strengthen and tone muscles, and energize the body to reduce stress and enhance physical and mental health.",
+                            LectureHours = 0,
+                            Number = "181",
+                            Title = "Yoga I (Beginning)"
+                        },
+                        new
+                        {
+                            ID = 35,
+                            CreditHours = 0,
+                            Department = "PE",
+                            Description = "This course is a continuation of PE 181, which is an introduction to Hatha Yoga (the Yoga of physical well-being). Active participation and emphasis on awareness and internal focus while practicing advanced yoga asanas (poses), pranayama (controlled breath), and meditation. Performance of these skills and techniques will increase muscle strength and endurance, increase flexibility and balance, improve body posture, reduce stress, and enhance relaxation. Prerequisite: PE 181.",
+                            LectureHours = 0,
+                            Number = "182",
+                            Title = "Yoga II (All Levels/Intermediate)"
+                        },
+                        new
+                        {
+                            ID = 36,
+                            CreditHours = 0,
+                            Department = "PE",
+                            Description = "This course is designed to prepare students in healthcare professions with basic life support and cardiopulmonary resuscitation (CPR). Students will learn how to recognize cardiac arrest, give chest compressions, deliver ventilations, and provide early use of an automated external defibrillator (AED) individually and with a partner. Adult, child, and infant rescue techniques including choking will be part of this course. American Heart Association Basic Life Support (BLS) for Healthcare Providers certification is available for those who meet the course requirements. Additional fee is required to obtain certification. Prerequisite: Reading Proficiency.",
+                            LectureHours = 0,
+                            Number = "220",
+                            Title = "American Heart Association Cardiopulmonary Resuscitation (CPR) for Healthcare Providers"
                         });
                 });
 
