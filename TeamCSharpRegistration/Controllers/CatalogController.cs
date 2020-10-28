@@ -25,7 +25,9 @@ namespace TeamCSharpRegistration.Controllers
             List<Course> courses = new List<Course>();
             List<string> departments = new List<string>();
 
-            courses = context.Courses.ToList();
+            courses = context.Courses
+                .OrderBy(d => d.Department)
+                .ToList();
 
             foreach (Course course in courses)
             {
@@ -37,7 +39,7 @@ namespace TeamCSharpRegistration.Controllers
 
             return View(departments);
             
-            /*
+            /* Old method - 
             var courses = from c in context.Courses select c;
                 //.Include(c => c.Title)
             if (!String.IsNullOrEmpty(department))
@@ -57,6 +59,7 @@ namespace TeamCSharpRegistration.Controllers
             List<Course> courses = new List<Course>();
             courses = context.Courses
                 .Where(d => d.Department == department)
+                .OrderBy(n => n.Number)
                 .ToList();
 
             return View(courses);
