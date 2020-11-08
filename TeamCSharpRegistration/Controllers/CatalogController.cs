@@ -83,9 +83,34 @@ namespace TeamCSharpRegistration.Controllers
                 .Where(c => c.CourseID == courseID)
                 .ToList();
 
+            List<SectionViewModel> sectionViewModels = new List<SectionViewModel>();
 
+            foreach (Section section in sections)
+            {
+                SectionViewModel currentSection = new SectionViewModel();
 
-            return View(sections);
+                currentSection.Section = section;
+
+                currentSection.Course = context.Courses
+                    .Where(i => i.ID == courseID)
+                    .ToList()[0];
+
+                currentSection.Instructor = context.Instructors
+                    .Where(i => i.ID == section.InstructorID)
+                    .ToList()[0];
+
+                currentSection.Campus = context.Campuses
+                    .Where(i => i.ID == section.CampusID)
+                    .ToList()[0];
+
+                currentSection.Meetings = context.Meetings
+                    .Where(s => s.SectionID == section.ID)
+                    .ToList();
+
+                sectionViewModels.Add(currentSection);
+            }
+
+            return View(sectionViewModels);
         }
 
 

@@ -1,7 +1,6 @@
-﻿@model List<Section>
-
-<!-- Shanice - Setup section view with temporary ViewBag 
-    title and simple display of section numbers for verification 
+﻿@model List<SectionViewModel>
+<!-- Shanice - Setup section view with temporary ViewBag
+    title and simple display of section numbers for verification
     of correct data.-->
 
 <h1>Sections for @ViewBag.course</h1>
@@ -9,7 +8,14 @@
 <p>Functionality not yet fully implemented.</p>
 
 <h2>Available Sections:</h2>
-@foreach (Section s in Model)
+
+
+@foreach (SectionViewModel s in Model)
 {
-    <p> @s.Number </p>
+    <p>@s.Course.Title</p>
+    <p>Section Number: @s.Section.Number</p>
+    <p>Instructor: @s.Instructor.FirstName @s.Instructor.LastName</p>
+    <p>Campus: @s.Campus.Name</p>
+    
+   
 }

@@ -11,7 +11,10 @@ namespace TeamCSharpRegistration.Data
     {
         public DbSet<Course> Courses { get; set; }
         public DbSet<Section> Sections { get; set; }
-        
+        public DbSet<Instructor> Instructors { get; set; }
+        public DbSet<Campus> Campuses { get; set; }
+        public DbSet<Meeting> Meetings { get; set; }
+
 
         public RegistrationDbContext(DbContextOptions<RegistrationDbContext> options) : base(options)
         {
@@ -21,7 +24,7 @@ namespace TeamCSharpRegistration.Data
         {
             base.OnModelCreating(modelBuilder);
 
-            // Shanice - Populated OnBuilder with course data
+            // Shanice - Populated OnBuilder with course data - Added scraped data provided by Marshall.
             modelBuilder.Entity<Course>().HasData(
 
                 new Course { 
@@ -427,7 +430,26 @@ namespace TeamCSharpRegistration.Data
                     ID = 1,
                     Number = "111",
                     CRN = 283746,
-                    CourseID = 1,
+                    CourseID = 21,
+                    InstructorID = 1,
+                    CampusID = 1,
+                    Building = "",
+                    Room = "",
+                    Type = "Online",
+                    StartDate = new DateTime(),
+                    EndDate = new DateTime(),
+                    Seats = 25,
+                    StudentsEnrolled = 5,
+                    ScheduleType = "Online",
+                    Notes = ""
+                },
+
+                new Section
+                {
+                    ID = 2,
+                    Number = "111",
+                    CRN = 283746,
+                    CourseID = 21,
                     InstructorID = 1,
                     CampusID = 1,
                     Building = "",
@@ -446,11 +468,47 @@ namespace TeamCSharpRegistration.Data
                new Campus
                {
                    ID = 1,
-                   Code = "ONL",
-                   Name = "Online",
-                   Address = "online",
+                   Code = "NET",
+                   Name = "Internet",
+                   Address = "",
                    Phone = ""
-               } 
+               },
+
+               new Campus
+               {
+                   ID = 2,
+                   Code = "FV",
+                   Name = "Flo Valley",
+                   Address = "3400 Pershall Road, Ferguson, MO 63135",
+                   Phone = "314-513-4200"
+               },
+
+               new Campus
+               {
+                   ID = 3,
+                   Code = "FP",
+                   Name = "Forest Park",
+                   Address = "5600 Oakland Ave., St. Louis, MO 63110",
+                   Phone = "314-644-9100"
+               },
+
+               new Campus
+               {
+                   ID = 4,
+                   Code = "MC",
+                   Name = "Meramec",
+                   Address = "11333 Big Bend Road, St. Louis, MO 63122",
+                   Phone = "314-984-7500"
+               },
+
+               new Campus
+               {
+                   ID = 5,
+                   Code = "WW",
+                   Name = "Wildwood",
+                   Address = "2645 Generations Drive, Wildwood, MO 63040",
+                   Phone = "636-422-2000"
+               }
            );
 
             modelBuilder.Entity<Instructor>().HasData(
