@@ -7,6 +7,7 @@ using TeamCSharpRegistration.Models;
 namespace TeamCSharpRegistration.Data
 {
     // Shanice - Setup DbContext for Entity
+    //         - Setup DbStes for secondary models.
     public class RegistrationDbContext : IdentityDbContext<IdentityUser>
     {
         public DbSet<Course> Courses { get; set; }
@@ -24,7 +25,8 @@ namespace TeamCSharpRegistration.Data
         {
             base.OnModelCreating(modelBuilder);
 
-            // Shanice - Populated OnBuilder with course data, formatted, adjusted - Added scraped data provided by Marshall.
+            // Shanice - Populated OnBuilder with course data, formatted, adjusted.
+            //         - Added scraped data (provided by Marshall).
 
             // Courses
             modelBuilder.Entity<Course>().HasData(

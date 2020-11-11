@@ -14,7 +14,7 @@ namespace TeamCSharpRegistration.Models
         public string Title { get; set; }
         public string Description { get; set; }
         public int CreditHours { get; set; }
-        public int LectureHours { get; set; } //nullable
+        public int? LectureHours { get; set; } //nullable
 
         //Create constructors - Marshall
         public Course()

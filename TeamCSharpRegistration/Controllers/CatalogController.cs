@@ -25,6 +25,7 @@ namespace TeamCSharpRegistration.Controllers
             List<Course> courses = new List<Course>();
             List<string> departments = new List<string>();
 
+            // Make list of departments.
             courses = context.Courses
                 .OrderBy(d => d.Department)
                 .ToList();
@@ -54,8 +55,9 @@ namespace TeamCSharpRegistration.Controllers
         // Shanice - Connect entity to course view and finished connecting department view to courses view.
         public IActionResult Courses(string department)
         {
-            //department = "ENG";
+            //department = "ENG"; 
 
+            // Get list of courses in department.
             List<Course> courses = new List<Course>();
             courses = context.Courses
                 .Where(d => d.Department == department)
@@ -65,11 +67,13 @@ namespace TeamCSharpRegistration.Controllers
             return View(courses);
         }
 
-        // Shanice - Setup routing for Sections and connected Entity.
+        // Shanice - Setup routing for Sections and connected Entity. 
+        //         - Setup Entity queries to populate SectionViewModel.
         public IActionResult Sections(string course)
         {
             ViewBag.course = course;
 
+            // Get course ID.
             List<Course> courses = new List<Course>();
             courses = context.Courses
                 .Where(t => t.Title == course)
@@ -79,10 +83,12 @@ namespace TeamCSharpRegistration.Controllers
 
             List<Section> sections = new List<Section>();
 
+            // Get list of sections with matching courseID.
             sections = context.Sections
                 .Where(c => c.CourseID == courseID)
                 .ToList();
 
+            // Build ViewModel for each section in list, creating new list of ViewModels.
             List<SectionViewModel> sectionViewModels = new List<SectionViewModel>();
 
             foreach (Section section in sections)
@@ -110,6 +116,7 @@ namespace TeamCSharpRegistration.Controllers
                 sectionViewModels.Add(currentSection);
             }
 
+            // Send list of ViewModels to view.
             return View(sectionViewModels);
         }
 

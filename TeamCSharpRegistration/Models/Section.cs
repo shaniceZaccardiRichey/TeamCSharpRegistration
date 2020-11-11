@@ -13,12 +13,12 @@ namespace TeamCSharpRegistration.Models
         public int CRN { get; set; }
         public int CourseID { get; set; } //foreign key
         public Course Course { get; set; }
-        public int InstructorID { get; set; } //nullable
+        public int InstructorID { get; set; } 
         public Instructor Instructor { get; set; }
         public int CampusID { get; set; } //foreign key
         public Campus Campus { get; set; }
-        public string Building { get; set; } //nullable
-        public string Room { get; set; } //nullable
+        public string? Building { get; set; } //nullable
+        public string? Room { get; set; } //nullable
         public string Type { get; set; }
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }

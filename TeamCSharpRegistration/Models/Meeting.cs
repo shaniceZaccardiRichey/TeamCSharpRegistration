@@ -10,17 +10,17 @@ namespace TeamCSharpRegistration.Models
     {
         public int ID { get; set; }
         public string Type { get; set; }
-        public string Building { get; set; } //nullable
-        public string Room { get; set; } //nullable
+        public string? Building { get; set; } //nullable
+        public string? Room { get; set; } //nullable
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }
         public DateTime StartTime { get; set; }
         public DateTime EndTime { get; set; }
         public string Day { get; set; }
         // Establish foreign keys - Shanice
-        public int SectionID { get; set; } 
+        public int SectionID { get; set; } //foreign key
         public Section Section { get; set; }
-        public int CampusID { get; set; } 
+        public int CampusID { get; set; } //foreign key
         public Campus Campus { get; set; }
 
         public Meeting()

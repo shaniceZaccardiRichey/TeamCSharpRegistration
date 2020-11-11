@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 
 namespace TeamCSharpRegistration.Models
 {
+    // Shanice - Create SectionViewModel to group models to send to Section view @Model
     public class SectionViewModel { 
         public Section Section { get; set; }
         public Course Course { get; set; }
