@@ -8,6 +8,7 @@ namespace TeamCSharpRegistration.Data
 {
     // Shanice - Setup DbContext for Entity
     //         - Setup DbStes for secondary models.
+    //         - Setup cart models.
     public class RegistrationDbContext : IdentityDbContext<IdentityUser>
     {
         public DbSet<Course> Courses { get; set; }
@@ -15,7 +16,9 @@ namespace TeamCSharpRegistration.Data
         public DbSet<Instructor> Instructors { get; set; }
         public DbSet<Campus> Campuses { get; set; }
         public DbSet<Meeting> Meetings { get; set; }
-
+        public DbSet<CartItem> CartItems { get; set; }
+        public DbSet<EnrolledClass> EnrolledClasses { get; set; }
+        public DbSet<TranscriptItem> TranscriptItems { get; set; }
 
         public RegistrationDbContext(DbContextOptions<RegistrationDbContext> options) : base(options)
         {

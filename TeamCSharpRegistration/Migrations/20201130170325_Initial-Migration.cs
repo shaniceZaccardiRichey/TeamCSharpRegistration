@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace TeamCSharpRegistration.Migrations
 {
-    public partial class Initialwithallseeddata : Migration
+    public partial class InitialMigration : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -74,7 +74,7 @@ namespace TeamCSharpRegistration.Migrations
                     Title = table.Column<string>(nullable: true),
                     Description = table.Column<string>(nullable: true),
                     CreditHours = table.Column<int>(nullable: false),
-                    LectureHours = table.Column<int>(nullable: false)
+                    LectureHours = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -213,6 +213,33 @@ namespace TeamCSharpRegistration.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "TranscriptItems",
+                columns: table => new
+                {
+                    TranscriptItemID = table.Column<int>(nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    UserId = table.Column<string>(nullable: true),
+                    CourseID = table.Column<int>(nullable: false),
+                    Grade = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_TranscriptItems", x => x.TranscriptItemID);
+                    table.ForeignKey(
+                        name: "FK_TranscriptItems_Courses_CourseID",
+                        column: x => x.CourseID,
+                        principalTable: "Courses",
+                        principalColumn: "ID",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_TranscriptItems_AspNetUsers_UserId",
+                        column: x => x.UserId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Sections",
                 columns: table => new
                 {
@@ -254,6 +281,58 @@ namespace TeamCSharpRegistration.Migrations
                         principalTable: "Instructors",
                         principalColumn: "ID",
                         onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "CartItems",
+                columns: table => new
+                {
+                    CartItemID = table.Column<int>(nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    UserId = table.Column<string>(nullable: true),
+                    SectionID = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_CartItems", x => x.CartItemID);
+                    table.ForeignKey(
+                        name: "FK_CartItems_Sections_SectionID",
+                        column: x => x.SectionID,
+                        principalTable: "Sections",
+                        principalColumn: "ID",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_CartItems_AspNetUsers_UserId",
+                        column: x => x.UserId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "EnrolledClasses",
+                columns: table => new
+                {
+                    EnrolledClassID = table.Column<int>(nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    UserId = table.Column<string>(nullable: true),
+                    SectionID = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_EnrolledClasses", x => x.EnrolledClassID);
+                    table.ForeignKey(
+                        name: "FK_EnrolledClasses_Sections_SectionID",
+                        column: x => x.SectionID,
+                        principalTable: "Sections",
+                        principalColumn: "ID",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_EnrolledClasses_AspNetUsers_UserId",
+                        column: x => x.UserId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -693,6 +772,26 @@ namespace TeamCSharpRegistration.Migrations
                 unique: true);
 
             migrationBuilder.CreateIndex(
+                name: "IX_CartItems_SectionID",
+                table: "CartItems",
+                column: "SectionID");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_CartItems_UserId",
+                table: "CartItems",
+                column: "UserId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_EnrolledClasses_SectionID",
+                table: "EnrolledClasses",
+                column: "SectionID");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_EnrolledClasses_UserId",
+                table: "EnrolledClasses",
+                column: "UserId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Instructors_CampusID",
                 table: "Instructors",
                 column: "CampusID");
@@ -721,6 +820,16 @@ namespace TeamCSharpRegistration.Migrations
                 name: "IX_Sections_InstructorID",
                 table: "Sections",
                 column: "InstructorID");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_TranscriptItems_CourseID",
+                table: "TranscriptItems",
+                column: "CourseID");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_TranscriptItems_UserId",
+                table: "TranscriptItems",
+                column: "UserId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -741,16 +850,25 @@ namespace TeamCSharpRegistration.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
+                name: "CartItems");
+
+            migrationBuilder.DropTable(
+                name: "EnrolledClasses");
+
+            migrationBuilder.DropTable(
                 name: "Meetings");
+
+            migrationBuilder.DropTable(
+                name: "TranscriptItems");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");
 
             migrationBuilder.DropTable(
-                name: "AspNetUsers");
+                name: "Sections");
 
             migrationBuilder.DropTable(
-                name: "Sections");
+                name: "AspNetUsers");
 
             migrationBuilder.DropTable(
                 name: "Courses");

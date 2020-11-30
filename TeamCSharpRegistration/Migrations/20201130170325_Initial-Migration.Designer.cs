@@ -9,8 +9,8 @@ using TeamCSharpRegistration.Data;
 namespace TeamCSharpRegistration.Migrations
 {
     [DbContext(typeof(RegistrationDbContext))]
-    [Migration("20201109185837_Initial with all seed data")]
-    partial class Initialwithallseeddata
+    [Migration("20201130170325_Initial-Migration")]
+    partial class InitialMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -280,6 +280,27 @@ namespace TeamCSharpRegistration.Migrations
                         });
                 });
 
+            modelBuilder.Entity("TeamCSharpRegistration.Models.CartItem", b =>
+                {
+                    b.Property<int>("CartItemID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<int>("SectionID")
+                        .HasColumnType("int");
+
+                    b.Property<string>("UserId")
+                        .HasColumnType("varchar(255) CHARACTER SET utf8mb4");
+
+                    b.HasKey("CartItemID");
+
+                    b.HasIndex("SectionID");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("CartItems");
+                });
+
             modelBuilder.Entity("TeamCSharpRegistration.Models.Course", b =>
                 {
                     b.Property<int>("ID")
@@ -295,7 +316,7 @@ namespace TeamCSharpRegistration.Migrations
                     b.Property<string>("Description")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<int>("LectureHours")
+                    b.Property<int?>("LectureHours")
                         .HasColumnType("int");
 
                     b.Property<string>("Number")
@@ -589,6 +610,27 @@ namespace TeamCSharpRegistration.Migrations
                             Number = "220",
                             Title = "American Heart Association Cardiopulmonary Resuscitation (CPR) for Healthcare Providers"
                         });
+                });
+
+            modelBuilder.Entity("TeamCSharpRegistration.Models.EnrolledClass", b =>
+                {
+                    b.Property<int>("EnrolledClassID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<int>("SectionID")
+                        .HasColumnType("int");
+
+                    b.Property<string>("UserId")
+                        .HasColumnType("varchar(255) CHARACTER SET utf8mb4");
+
+                    b.HasKey("EnrolledClassID");
+
+                    b.HasIndex("SectionID");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("EnrolledClasses");
                 });
 
             modelBuilder.Entity("TeamCSharpRegistration.Models.Instructor", b =>
@@ -4474,6 +4516,30 @@ namespace TeamCSharpRegistration.Migrations
                         });
                 });
 
+            modelBuilder.Entity("TeamCSharpRegistration.Models.TranscriptItem", b =>
+                {
+                    b.Property<int>("TranscriptItemID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<int>("CourseID")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Grade")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("UserId")
+                        .HasColumnType("varchar(255) CHARACTER SET utf8mb4");
+
+                    b.HasKey("TranscriptItemID");
+
+                    b.HasIndex("CourseID");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("TranscriptItems");
+                });
+
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
                 {
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
@@ -4525,6 +4591,32 @@ namespace TeamCSharpRegistration.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("TeamCSharpRegistration.Models.CartItem", b =>
+                {
+                    b.HasOne("TeamCSharpRegistration.Models.Section", "Section")
+                        .WithMany()
+                        .HasForeignKey("SectionID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId");
+                });
+
+            modelBuilder.Entity("TeamCSharpRegistration.Models.EnrolledClass", b =>
+                {
+                    b.HasOne("TeamCSharpRegistration.Models.Section", "Section")
+                        .WithMany()
+                        .HasForeignKey("SectionID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId");
+                });
+
             modelBuilder.Entity("TeamCSharpRegistration.Models.Instructor", b =>
                 {
                     b.HasOne("TeamCSharpRegistration.Models.Campus", "Campus")
@@ -4568,6 +4660,19 @@ namespace TeamCSharpRegistration.Migrations
                         .HasForeignKey("InstructorID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("TeamCSharpRegistration.Models.TranscriptItem", b =>
+                {
+                    b.HasOne("TeamCSharpRegistration.Models.Course", "Course")
+                        .WithMany()
+                        .HasForeignKey("CourseID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId");
                 });
 #pragma warning restore 612, 618
         }

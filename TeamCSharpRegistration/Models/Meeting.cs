@@ -17,6 +17,7 @@ namespace TeamCSharpRegistration.Models
         public DateTime StartTime { get; set; }
         public DateTime EndTime { get; set; }
         public string Day { get; set; }
+
         // Establish foreign keys - Shanice
         public int SectionID { get; set; } //foreign key
         public Section Section { get; set; }
