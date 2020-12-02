@@ -2,7 +2,6 @@
 <!-- Shanice - Setup section view with temporary ViewBag
     title and simple display of section numbers for verification
     of correct data.-->
-
 <!-- Marshall - CSS styling of section view.-->
 <style>
     html {
@@ -52,8 +51,8 @@
 
     .section-title {
         width: 55%;
-        
     }
+
     header ~ .container {
         padding: 2%;
     }
@@ -74,33 +73,35 @@
     }
 
     .section-meeting-container {
-        border-top: 2px solid #333333;
-        border-left: 2px solid #333333;
         display: inline-block;
         background-color: #ffffff;
         width: calc(100% - .5em);
     }
-        .section-meeting-container table{
-            width:100%;
+
+        .section-meeting-container table {
+            border-top: 2px solid #333333;
+            border-left: 2px solid #333333;
+            background-color: #ffffff;
+            width: 100%;
         }
 
-        .section-meeting-container table * {
-            text-align: left;
-            padding: 0.25em;
-            box-sizing: border-box;
-            font-size: 1rem;
-        }
+            .section-meeting-container table * {
+                text-align: left;
+                padding: 0.25em;
+                box-sizing: border-box;
+                font-size: 1rem;
+            }
 
     .section-meeting-type {
         background-color: #ffffff;
-        width:60%;
+        width: 60%;
     }
 
     .section-meeting-days {
         font-weight: 600;
         text-align: right;
         background-color: #ffffff;
-        width:15%
+        width: 15%
     }
 
     .section-meeting-times {
@@ -108,7 +109,7 @@
     }
 
     .section-meeting-location {
-        width:40%;
+        width: 40%;
         background-color: #ffffff;
     }
 </style>
@@ -148,28 +149,47 @@
                             meetings.Add(m);
                         }
                     }
-                    foreach (Meeting m in meetings)
-                    {
 
-                        <div class="section-meeting-container">
+
+
+                    <div class="section-meeting-container">
+                        @foreach (Meeting m in meetings)
+                        {
                             <table>
-                                            <tr>
-                                                <td colspan="2" class="section-meeting-type">
-                                                    @m.Type
-                                                </td><td rowspan="2" class="section-meeting-location">
-                                                    @m.Campus.Name - @m.Building @m.Room
-                                                </td>
-                                            </tr>
-                            <tr><td class="section-meeting-days">
-                                @m.Day
-                            </td><td class="section-meeting-times">
-                                @String.Format("{0:h:mm\u00A0tt}-\u200b{1:h:mm\u00A0tt}", m.StartTime,m.EndDate)
-                            </td>
-                            </tr>
-                            </table>
-                        </div>
 
-                    }
+                                <tr>
+                                    <td colspan="2" class="section-meeting-type">
+                                        @m.Type
+                                    </td>
+                                    @if (String.IsNullOrEmpty(m.Building) && String.IsNullOrEmpty(m.Room))
+                                    {
+                                        <td rowspan="2" class="section-meeting-location">
+                                            @m.Campus.Name                                        
+                                        </td>
+                                    }
+                                    else
+                                    {
+                                <td rowspan="2" class="section-meeting-location">
+                                    @m.Campus.Name -@m.Building @m.Room
+                                </td>
+                                    }
+                                    </tr>
+                                <tr>
+                                    <td class="section-meeting-days">
+                                        @m.Day
+                                    </td>
+                                    
+                                    <td class="section-meeting-times">
+                                        @String.Format("{0:h:mm\u00A0tt}-\u200b{1:h:mm\u00A0tt}", m.StartTime, m.EndTime)
+                                    </td>
+                                </tr>
+
+                            </table>
+                        }
+                    </div>
+
+
+
                     <!--<div class="section-meeting-deadspace"></div>-->
 
                 }
