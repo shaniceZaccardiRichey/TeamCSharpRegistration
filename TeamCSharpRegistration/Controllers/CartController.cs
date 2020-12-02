@@ -25,10 +25,11 @@ namespace TeamCSharpRegistration.Controllers
             context = ctx;
         }
 
+      
         [Authorize]
         public IActionResult ViewCart(int sectionID)
         {
-            // Shanice - Temporarily using for visual confirmation of data being sent to new view.
+            // Shanice - Complete backend for add to cart feature.
             string userID = _userManager.GetUserId(HttpContext.User);
             ViewBag.sectionId = sectionID;
 
@@ -49,12 +50,6 @@ namespace TeamCSharpRegistration.Controllers
                 context.SaveChanges();
             }
 
-            /*
-            Section section = context.Sections
-                .Where(s => s.ID == sectionID)
-                .ToList()[0];
-            */
-
             List<CartItem> cartItems = new List<CartItem>();
 
             cartItems = context.CartItems
@@ -66,13 +61,6 @@ namespace TeamCSharpRegistration.Controllers
             foreach (CartItem c in cartItems)
             {
                 SectionViewModel sectionViewModel = new SectionViewModel();
-
-                /*
-                Section currentSection = context.Sections
-                    .Where(s => s.ID == c.SectionID)
-                    .ToList()[0];
-*/
-
 
                 sectionViewModel.Section = context.Sections
                     .Where(s => s.ID == c.SectionID)
