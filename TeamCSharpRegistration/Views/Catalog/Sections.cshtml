@@ -14,9 +14,9 @@
         font-size: 1.75em;
     }
 
-        .section-list div {
-            margin: none;
-        }
+    .section-list div {
+        margin: none;
+    }
 
     .section-title-row {
         font-size: 1.2rem;
@@ -30,10 +30,10 @@
         background-color: #aaaaaa;
     }
 
-            padding: 0.25em;
     .section-title-row > * {
         margin: none;
         padding: 0.25em;
+    }
 
     .section-meeting-row {
         background-color: #bbbbbb;
@@ -132,7 +132,7 @@
                 </div><div class="section-seats">
                     @(s.Section.Seats - s.Section.StudentsEnrolled) Seats<br />
                     <!-- Shanice - Added link for adding to cart. (Work in Progress)-->
-                    <a asp-controller="Cart" asp-action="ViewCart" asp-route-course="@s.Section.ID">
+                    <a asp-controller="Cart" asp-action="ViewCart" asp-route-sectionID="@s.Section.ID">
                         Add
                     </a>
                 </div>

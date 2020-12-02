@@ -9,10 +9,8 @@
 <p>@ViewBag.userid</p>
 
 
-<p>@ViewBag.sectionID</p>
-
 
 @foreach (SectionViewModel s in Model)
 {
-    <p>boop</p>
+    @s.Course.Title<br />
 }
