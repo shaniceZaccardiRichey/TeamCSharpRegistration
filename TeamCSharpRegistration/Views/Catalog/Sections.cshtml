@@ -188,15 +188,13 @@
                         }
                     </div>
 
-
-
                     <!--<div class="section-meeting-deadspace"></div>-->
 
                 }
             </div>
         </div>
         <!-- Shanice - Added link for adding to cart. (Work in Progress)-->
-        <a asp-controller="Cart" asp-action="ViewCart" asp-route-course="@s.Section.ID">
+        <a asp-controller="Cart" asp-action="ViewCart" asp-route-sectionID="@s.Section.ID">
             <span>Add to Cart</span>
         </a>
         

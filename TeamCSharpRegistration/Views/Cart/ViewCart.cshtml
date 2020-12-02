@@ -1,4 +1,4 @@
-﻿
+﻿@model List<SectionViewModel>
 @{
     ViewData["Title"] = "ViewCart";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -8,5 +8,11 @@
 <h1>ViewCart Test</h1>
 <p>@ViewBag.userid</p>
 
-<p>@Model</p>
 
+<p>@ViewBag.sectionID</p>
+
+
+@foreach (SectionViewModel s in Model)
+{
+    <p>boop</p>
+}
