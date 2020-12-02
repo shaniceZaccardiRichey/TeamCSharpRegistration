@@ -30,10 +30,10 @@
         background-color: #aaaaaa;
     }
 
-        .section-title-row > * {
-            margin: none;
             padding: 0.25em;
-        }
+    .section-title-row > * {
+        margin: none;
+        padding: 0.25em;
 
     .section-meeting-row {
         background-color: #bbbbbb;
@@ -78,19 +78,19 @@
         width: calc(100% - .5em);
     }
 
-        .section-meeting-container table {
-            border-top: 2px solid #333333;
-            border-left: 2px solid #333333;
-            background-color: #ffffff;
-            width: 100%;
-        }
+    .section-meeting-container table {
+        border-top: 2px solid #333333;
+        border-left: 2px solid #333333;
+        background-color: #ffffff;
+        width: 100%;
+    }
 
-            .section-meeting-container table * {
-                text-align: left;
-                padding: 0.25em;
-                box-sizing: border-box;
-                font-size: 1rem;
-            }
+    .section-meeting-container table * {
+        text-align: left;
+        padding: 0.25em;
+        box-sizing: border-box;
+        font-size: 1rem;
+    }
 
     .section-meeting-type {
         background-color: #ffffff;
@@ -130,7 +130,11 @@
                 </div><div class="section-instructor">
                     @s.Instructor.LastName, @s.Instructor.FirstName @s.Instructor.MiddleName
                 </div><div class="section-seats">
-                    @(s.Section.Seats - s.Section.StudentsEnrolled) Seats
+                    @(s.Section.Seats - s.Section.StudentsEnrolled) Seats<br />
+                    <!-- Shanice - Added link for adding to cart. (Work in Progress)-->
+                    <a asp-controller="Cart" asp-action="ViewCart" asp-route-course="@s.Section.ID">
+                        Add
+                    </a>
                 </div>
             </div>
             <div class="section-meeting-row">
@@ -164,21 +168,21 @@
                                     @if (String.IsNullOrEmpty(m.Building) && String.IsNullOrEmpty(m.Room))
                                     {
                                         <td rowspan="2" class="section-meeting-location">
-                                            @m.Campus.Name                                        
+                                            @m.Campus.Name
                                         </td>
                                     }
                                     else
                                     {
-                                <td rowspan="2" class="section-meeting-location">
-                                    @m.Campus.Name -@m.Building @m.Room
-                                </td>
+                                        <td rowspan="2" class="section-meeting-location">
+                                            @m.Campus.Name -@m.Building @m.Room
+                                        </td>
                                     }
-                                    </tr>
+                                </tr>
                                 <tr>
                                     <td class="section-meeting-days">
                                         @m.Day
                                     </td>
-                                    
+
                                     <td class="section-meeting-times">
                                         @String.Format("{0:h:mm\u00A0tt}-\u200b{1:h:mm\u00A0tt}", m.StartTime, m.EndTime)
                                     </td>
@@ -193,10 +197,5 @@
                 }
             </div>
         </div>
-        <!-- Shanice - Added link for adding to cart. (Work in Progress)-->
-        <a asp-controller="Cart" asp-action="ViewCart" asp-route-sectionID="@s.Section.ID">
-            <span>Add to Cart</span>
-        </a>
-        
-      }
+    }
 </div>
