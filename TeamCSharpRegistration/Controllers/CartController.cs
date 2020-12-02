@@ -30,11 +30,14 @@ namespace TeamCSharpRegistration.Controllers
         public IActionResult ViewCart(int sectionID)
         {
             // Shanice - Complete backend for add to cart feature.
+
+            // Fetch current user Id.
             string userID = _userManager.GetUserId(HttpContext.User);
             ViewBag.sectionId = sectionID;
 
             List<CartItem> initialCartItems = new List<CartItem>();
 
+            // Check for existing entry.
             initialCartItems = context.CartItems
                 .Where(c => c.UserId == userID)
                 .Where(s => s.SectionID == sectionID)
@@ -56,6 +59,7 @@ namespace TeamCSharpRegistration.Controllers
                 .Where(c => c.UserId == userID)
                 .ToList();
 
+            //Create list of View Models to send to View.
             List<SectionViewModel> sectionViewModels = new List<SectionViewModel>();
 
             foreach (CartItem c in cartItems)
