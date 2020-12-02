@@ -175,5 +175,10 @@
                 }
             </div>
         </div>
-    }
+        <!-- Shanice - Added link for adding to cart. (Work in Progress)-->
+        <a asp-controller="Cart" asp-action="ViewCart" asp-route-course="@s.Section.ID">
+            <span>Add to Cart</span>
+        </a>
+        
+      }
 </div>

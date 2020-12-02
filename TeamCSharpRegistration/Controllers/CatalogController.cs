@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using TeamCSharpRegistration.Data;
@@ -12,14 +13,20 @@ namespace TeamCSharpRegistration.Controllers
 {
     public class CatalogController : Controller
     {
+        // Shanice - Setup for fetching current user's ID.
+        private readonly UserManager<IdentityUser> _userManager;
+
         // Shanice -Setup Controller to use Entity context
         private RegistrationDbContext context { get; set; }
-        public CatalogController(RegistrationDbContext ctx)
+
+        public CatalogController(RegistrationDbContext ctx, UserManager<IdentityUser> userManager)
         {
+            _userManager = userManager;
             context = ctx;
         }
 
-         // Shanice - Connected entity to department view
+        // Shanice - Connected entity to department view
+        [Authorize]
         public IActionResult Departments()
         {
             List<Course> courses = new List<Course>();
@@ -53,6 +60,7 @@ namespace TeamCSharpRegistration.Controllers
         }
 
         // Shanice - Connect entity to course view and finished connecting department view to courses view.
+        [Authorize]
         public IActionResult Courses(string department)
         {
             //department = "ENG"; 
@@ -69,6 +77,7 @@ namespace TeamCSharpRegistration.Controllers
 
         // Shanice - Setup routing for Sections and connected Entity. 
         //         - Setup Entity queries to populate SectionViewModel.
+        [Authorize]
         public IActionResult Sections(string course)
         {
             ViewBag.course = course;
