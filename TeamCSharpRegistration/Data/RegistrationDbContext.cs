@@ -4615,30 +4615,30 @@ namespace TeamCSharpRegistration.Data
                 new Meeting
                 {
                     ID = 148,
-                    Type = "Web-Based / Internet",
-                    Building = null,
-                    Room = null,
+                    Type = "In-Class/Online/Virtual Lect.",
+                    Building = "Physical Ed Bldg TB",
+                    Room = "A",
                     StartDate = new DateTime(2020, 8, 21),
                     EndDate = new DateTime(2020, 12, 13),
                     StartTime = new DateTime(1970, 1, 1, 0, 0, 0),
                     EndTime = new DateTime(1970, 1, 1, 0, 1, 0),
                     Day = null,
                     SectionID = 99,
-                    CampusID = 1
+                    CampusID = 2
                 },
                 new Meeting
                 {
                     ID = 149,
-                    Type = "Web-Based / Internet",
-                    Building = null,
-                    Room = null,
-                    StartDate = new DateTime(2020, 8, 21),
-                    EndDate = new DateTime(2020, 12, 13),
-                    StartTime = new DateTime(1970, 1, 1, 0, 0, 0),
-                    EndTime = new DateTime(1970, 1, 1, 0, 1, 0),
-                    Day = null,
+                    Type = "In-Class/Online/Virtual Lect.",
+                    Building = "Physical Ed Bldg TB",
+                    Room = "A",
+                    StartDate = new DateTime(2020, 10, 2),
+                    EndDate = new DateTime(2020, 10, 14),
+                    StartTime = new DateTime(1970, 1, 1, 14, 0, 0),
+                    EndTime = new DateTime(1970, 1, 1, 15, 55, 0),
+                    Day = "W",
                     SectionID = 100,
-                    CampusID = 1
+                    CampusID = 3
                 },
                 new Meeting
                 {
