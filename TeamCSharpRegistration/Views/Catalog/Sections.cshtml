@@ -183,9 +183,18 @@
                                         @m.Day
                                     </td>
 
-                                    <td class="section-meeting-times">
-                                        @String.Format("{0:h:mm\u00A0tt}-\u200b{1:h:mm\u00A0tt}", m.StartTime, m.EndTime)
-                                    </td>
+                                    @if ((m.StartTime.Hour == 0) && (m.StartTime.Minute == 0) && (m.EndTime.Hour == 0) && (m.EndTime.Minute == 1))
+                                    {
+                                        <td class="section-meeting-times">
+                                            No meeting
+                                        </td>
+                                    }
+                                    else
+                                    {
+                                        <td class="section-meeting-times">
+                                            @String.Format("{0:h:mm\u00A0tt}-\u200b{1:h:mm\u00A0tt}", m.StartTime, m.EndTime)
+                                        </td>
+                                    }
                                 </tr>
 
                             </table>
