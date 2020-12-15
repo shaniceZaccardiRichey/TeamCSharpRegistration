@@ -190,14 +190,7 @@ namespace TeamCSharpRegistration.Controllers
 
 
                 return View(sectionViewModels);
-            } else if (actionType == "remove")
-            {
-
-
-
-
-                return View();
-            }
+            } 
             else {
                 List<SectionViewModel> sectionViewModels = new List<SectionViewModel>();
                 return View(sectionViewModels); 
