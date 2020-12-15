@@ -27,6 +27,9 @@ namespace TeamCSharpRegistration
 
             services.Configure<IdentityOptions>(options => options.Password.RequiredLength = 8);
 
+            //Marshall - this is bad and dumb but it fixes the session issue
+            services.Configure<SecurityStampValidatorOptions>(o => { o.ValidationInterval = System.TimeSpan.Zero; });
+
             //services.AddDbContext<RegistrationDbContext>(options => options.UseMySql(Configuration.GetConnectionString("DefaultConnection")));
         }
 
