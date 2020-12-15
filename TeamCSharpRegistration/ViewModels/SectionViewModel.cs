@@ -1,6 +1,8 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore.Storage.ValueConversion.Internal;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Policy;
 using System.Threading.Tasks;
 
 namespace TeamCSharpRegistration.Models
@@ -12,5 +14,11 @@ namespace TeamCSharpRegistration.Models
         public Instructor Instructor { get; set; }
         public Campus Campus { get; set; }
         public List<Meeting> Meetings { get; set; }
+
+        public SectionViewModel()
+        {
+            
+        }
+
     }
 }

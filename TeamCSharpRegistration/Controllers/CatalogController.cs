@@ -81,6 +81,7 @@ namespace TeamCSharpRegistration.Controllers
         public IActionResult Sections(string course)
         {
             ViewBag.course = course;
+            ViewBag.action = "add";
 
             // Get course ID.
             List<Course> courses = new List<Course>();

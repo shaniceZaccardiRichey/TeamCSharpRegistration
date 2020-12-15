@@ -8,9 +8,17 @@
 <h1>ViewCart Test</h1>
 <p>@ViewBag.userid</p>
 
-
+@ViewBag.AlreadyExistsWarning
 
 @foreach (SectionViewModel s in Model)
 {
-    @s.Course.Title<br />
+    @s.Course.Title
+    <br />
+    <a asp-controller="Cart" asp-action="ViewCart" asp-route-sectionID="@s.Section.ID" asp-route-actionType="remove">
+        Remove
+    </a>
 }
+
+<a asp-controller="Enrolling" asp-action="EnrolledClasses">
+    Enroll
+</a>

@@ -132,7 +132,7 @@
                 </div><div class="section-seats">
                     @(s.Section.Seats - s.Section.StudentsEnrolled) Seats<br />
                     <!-- Shanice - Added link for adding to cart. (Work in Progress)-->
-                    <a asp-controller="Cart" asp-action="ViewCart" asp-route-sectionID="@s.Section.ID">
+                    <a asp-controller="Cart" asp-action="ViewCart" asp-route-sectionID="@s.Section.ID" asp-route-actionType="add">
                         Add
                     </a>
                 </div>

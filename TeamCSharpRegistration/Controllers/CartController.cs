@@ -25,72 +25,169 @@ namespace TeamCSharpRegistration.Controllers
             context = ctx;
         }
 
-      
+        /*
+          [Authorize]
+          public IActionResult ViewCart(int sectionID)
+          {
+              // Shanice - Complete backend for add to cart feature.
+
+              // Fetch current user Id.
+              string userID = _userManager.GetUserId(HttpContext.User);
+              ViewBag.sectionId = sectionID;
+
+              List<CartItem> initialCartItems = new List<CartItem>();
+
+              // Check for existing entry.
+              initialCartItems = context.CartItems
+                  .Where(c => c.UserId == userID)
+                  .Where(s => s.SectionID == sectionID)
+                  .ToList();
+
+              if (initialCartItems.Count == 0)
+              {
+                  CartItem cartItem = new CartItem();
+                  cartItem.SectionID = sectionID;
+                  cartItem.UserId = userID;
+
+                  context.Add(cartItem);
+                  context.SaveChanges();
+
+                  ViewBag.AlreadyExistsWarning = "";
+              } else
+              {
+                  ViewBag.AlreadyExistsWarning = "Class Already in Cart!";
+              }
+
+              List<CartItem> cartItems = new List<CartItem>();
+
+              cartItems = context.CartItems
+                  .Where(c => c.UserId == userID)
+                  .ToList();
+
+              //Create list of View Models to send to View.
+              List<SectionViewModel> sectionViewModels = new List<SectionViewModel>();
+
+              foreach (CartItem c in cartItems)
+              {
+                  SectionViewModel sectionViewModel = new SectionViewModel();
+
+                  sectionViewModel.Section = context.Sections
+                      .Where(s => s.ID == c.SectionID)
+                      .ToList()[0];
+
+                  sectionViewModel.Course = context.Courses
+                      .Where(i => i.ID == sectionViewModel.Section.CourseID)
+                      .ToList()[0];
+
+                  sectionViewModel.Instructor = context.Instructors
+                      .Where(i => i.ID == sectionViewModel.Section.InstructorID)
+                      .ToList()[0];
+
+                  sectionViewModel.Campus = context.Campuses
+                      .Where(i => i.ID == sectionViewModel.Section.CampusID)
+                      .ToList()[0];
+
+                  sectionViewModel.Meetings = context.Meetings
+                      .Where(s => s.SectionID == sectionViewModel.Section.ID)
+                      .ToList();
+
+                  sectionViewModels.Add(sectionViewModel);
+              }
+
+
+              return View(sectionViewModels);
+          }
+          */
+    
+
         [Authorize]
-        public IActionResult ViewCart(int sectionID)
+        public IActionResult ViewCart(int sectionID, string actionType)
         {
-            // Shanice - Complete backend for add to cart feature.
 
-            // Fetch current user Id.
-            string userID = _userManager.GetUserId(HttpContext.User);
-            ViewBag.sectionId = sectionID;
-
-            List<CartItem> initialCartItems = new List<CartItem>();
-
-            // Check for existing entry.
-            initialCartItems = context.CartItems
-                .Where(c => c.UserId == userID)
-                .Where(s => s.SectionID == sectionID)
-                .ToList();
-
-            if (initialCartItems.Count == 0)
+            if (actionType == "add")
             {
-                CartItem cartItem = new CartItem();
-                cartItem.SectionID = sectionID;
-                cartItem.UserId = userID;
+                // Shanice - Complete backend for add to cart feature.
 
-                context.Add(cartItem);
-                context.SaveChanges();
-            }
+                // Fetch current user Id.
+                string userID = _userManager.GetUserId(HttpContext.User);
+                ViewBag.sectionId = sectionID;
 
-            List<CartItem> cartItems = new List<CartItem>();
+                List<CartItem> initialCartItems = new List<CartItem>();
 
-            cartItems = context.CartItems
-                .Where(c => c.UserId == userID)
-                .ToList();
-
-            //Create list of View Models to send to View.
-            List<SectionViewModel> sectionViewModels = new List<SectionViewModel>();
-
-            foreach (CartItem c in cartItems)
-            {
-                SectionViewModel sectionViewModel = new SectionViewModel();
-
-                sectionViewModel.Section = context.Sections
-                    .Where(s => s.ID == c.SectionID)
-                    .ToList()[0];
-
-                sectionViewModel.Course = context.Courses
-                    .Where(i => i.ID == sectionViewModel.Section.CourseID)
-                    .ToList()[0];
-
-                sectionViewModel.Instructor = context.Instructors
-                    .Where(i => i.ID == sectionViewModel.Section.InstructorID)
-                    .ToList()[0];
-
-                sectionViewModel.Campus = context.Campuses
-                    .Where(i => i.ID == sectionViewModel.Section.CampusID)
-                    .ToList()[0];
-
-                sectionViewModel.Meetings = context.Meetings
-                    .Where(s => s.SectionID == sectionViewModel.Section.ID)
+                // Check for existing entry.
+                initialCartItems = context.CartItems
+                    .Where(c => c.UserId == userID)
+                    .Where(s => s.SectionID == sectionID)
                     .ToList();
 
-                sectionViewModels.Add(sectionViewModel);
+                if (initialCartItems.Count == 0)
+                {
+                    CartItem cartItem = new CartItem();
+                    cartItem.SectionID = sectionID;
+                    cartItem.UserId = userID;
+
+                    context.Add(cartItem);
+                    context.SaveChanges();
+
+                    ViewBag.AlreadyExistsWarning = "";
+                }
+                else
+                {
+                    ViewBag.AlreadyExistsWarning = "Class Already in Cart!";
+                }
+
+                List<CartItem> cartItems = new List<CartItem>();
+
+                cartItems = context.CartItems
+                    .Where(c => c.UserId == userID)
+                    .ToList();
+
+                //Create list of View Models to send to View.
+                List<SectionViewModel> sectionViewModels = new List<SectionViewModel>();
+
+                foreach (CartItem c in cartItems)
+                {
+                    SectionViewModel sectionViewModel = new SectionViewModel();
+
+                    sectionViewModel.Section = context.Sections
+                        .Where(s => s.ID == c.SectionID)
+                        .ToList()[0];
+
+                    sectionViewModel.Course = context.Courses
+                        .Where(i => i.ID == sectionViewModel.Section.CourseID)
+                        .ToList()[0];
+
+                    sectionViewModel.Instructor = context.Instructors
+                        .Where(i => i.ID == sectionViewModel.Section.InstructorID)
+                        .ToList()[0];
+
+                    sectionViewModel.Campus = context.Campuses
+                        .Where(i => i.ID == sectionViewModel.Section.CampusID)
+                        .ToList()[0];
+
+                    sectionViewModel.Meetings = context.Meetings
+                        .Where(s => s.SectionID == sectionViewModel.Section.ID)
+                        .ToList();
+
+                    sectionViewModels.Add(sectionViewModel);
+                }
+
+
+                return View(sectionViewModels);
+            } else if (actionType == "remove")
+            {
+
+
+
+
+                return View();
+            }
+            else {
+                List<SectionViewModel> sectionViewModels = new List<SectionViewModel>();
+                return View(sectionViewModels); 
             }
 
-
-            return View(sectionViewModels);
+ 
         }
     }
 }
