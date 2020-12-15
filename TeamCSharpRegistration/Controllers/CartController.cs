@@ -104,7 +104,7 @@ namespace TeamCSharpRegistration.Controllers
         public IActionResult ViewCart(int sectionID, string actionType)
         {
 
-            if (actionType == "add")
+            if (actionType != "view")
             {
                 // Shanice - Complete backend for add to cart feature.
 
@@ -120,20 +120,36 @@ namespace TeamCSharpRegistration.Controllers
                     .Where(s => s.SectionID == sectionID)
                     .ToList();
 
-                if (initialCartItems.Count == 0)
-                {
-                    CartItem cartItem = new CartItem();
-                    cartItem.SectionID = sectionID;
-                    cartItem.UserId = userID;
+                if (actionType == "add") {
+                    if (initialCartItems.Count == 0)
+                    {
+                        CartItem cartItem = new CartItem();
+                        cartItem.SectionID = sectionID;
+                        cartItem.UserId = userID;
 
-                    context.Add(cartItem);
-                    context.SaveChanges();
+                        context.Add(cartItem);
+                        context.SaveChanges();
 
-                    ViewBag.AlreadyExistsWarning = "";
+                        ViewBag.AlreadyExistsWarning = "";
+                    }
+                    else
+                    {
+                        ViewBag.AlreadyExistsWarning = "Class Already in Cart!";
+                    }
                 }
-                else
+                if (actionType == "remove")
                 {
-                    ViewBag.AlreadyExistsWarning = "Class Already in Cart!";
+                    if (initialCartItems.Count != 0)
+                    {
+                        context.Remove(initialCartItems[0]);
+                        context.SaveChanges();
+
+                        ViewBag.AlreadyExistsWarning = "";
+                    }
+                    else
+                    {
+                        ViewBag.AlreadyExistsWarning = "Class Not in Cart!";
+                    }
                 }
 
                 List<CartItem> cartItems = new List<CartItem>();

@@ -15,9 +15,9 @@
         font-size: 1.75em;
     }
 
-        .section-list div {
-            margin: none;
-        }
+    .section-list div {
+        margin: none;
+    }
 
     .section-title-row {
         font-size: 1.2rem;
@@ -31,10 +31,10 @@
         background-color: #aaaaaa;
     }
 
-        .section-title-row > * {
-            margin: none;
-            padding: 0.25em;
-        }
+    .section-title-row > * {
+        margin: none;
+        padding: 0.25em;
+    }
 
     .section-meeting-row {
         background-color: #bbbbbb;
@@ -67,7 +67,6 @@
         width: 15%;
     }
 
-
     .section-meeting-deadspace {
         width: .5em;
         display: inline-block;
@@ -79,19 +78,19 @@
         width: calc(100% - .5em);
     }
 
-        .section-meeting-container table {
-            border-top: 2px solid #333333;
-            border-left: 2px solid #333333;
-            background-color: #ffffff;
-            width: 100%;
-        }
+    .section-meeting-container table {
+        border-top: 2px solid #333333;
+        border-left: 2px solid #333333;
+        background-color: #ffffff;
+        width: 100%;
+    }
 
-            .section-meeting-container table * {
-                text-align: left;
-                padding: 0.25em;
-                box-sizing: border-box;
-                font-size: 1rem;
-            }
+    .section-meeting-container table * {
+        text-align: left;
+        padding: 0.25em;
+        box-sizing: border-box;
+        font-size: 1rem;
+    }
 
     .section-meeting-type {
         background-color: #ffffff;
@@ -119,22 +118,6 @@
 <h1>ViewCart Test</h1>
 <p>@ViewBag.userid</p>
 
-<<<<<<< HEAD
-@ViewBag.AlreadyExistsWarning
-
-@foreach (SectionViewModel s in Model)
-{
-    @s.Course.Title
-    <br />
-    <a asp-controller="Cart" asp-action="ViewCart" asp-route-sectionID="@s.Section.ID" asp-route-actionType="remove">
-        Remove
-    </a>
-}
-
-<a asp-controller="Enrolling" asp-action="EnrolledClasses">
-    Enroll
-</a>
-=======
 
 <div class="section-list">
     @foreach (SectionViewModel s in Model)
@@ -147,7 +130,10 @@
                 @s.Instructor.LastName, @s.Instructor.FirstName @s.Instructor.MiddleName
             </div><div class="section-seats">
                 @(s.Section.Seats - s.Section.StudentsEnrolled) Seats<br />
-            </div>
+                <a asp-controller="Cart" asp-action="ViewCart" asp-route-sectionID="@s.Section.ID" asp-route-actionType="remove">
+                    Remove
+                </a>
+</div>
         </div>
         <div class="section-meeting-row">
             @{List<Meeting> meetings = new List<Meeting>();
@@ -217,4 +203,3 @@
     </div>
     }
 </div>
->>>>>>> a1ebfd6c77800aad5b21851f95eb52c0b3676707
