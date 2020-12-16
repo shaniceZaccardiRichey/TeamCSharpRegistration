@@ -4,7 +4,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>EnrolledClasses</h1>
+<h1>My Classes</h1>
 
 <style>
     html {
@@ -118,6 +118,7 @@
 </style>
 
 <!-- Shanice - Established EnrolledClasses View. -->
+<!-- Marshall - Structured and formatted view.-->
 <div class="section-list">
     @foreach (SectionViewModel s in Model)
     {
@@ -129,6 +130,7 @@
                     @s.Instructor.LastName, @s.Instructor.FirstName @s.Instructor.MiddleName
                 </div><div class="section-seats">
                     @(s.Section.Seats - s.Section.StudentsEnrolled) Seats<br />
+                <!-- Shanice - Added ability to drop from course-->
                     <a asp-controller="Enrolling" asp-action="EnrolledClasses" asp-route-sectionID="@s.Section.ID" asp-route-actionType="remove">
                         Drop
                     </a>

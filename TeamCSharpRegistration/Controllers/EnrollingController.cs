@@ -9,6 +9,7 @@ using TeamCSharpRegistration.Models;
 
 namespace TeamCSharpRegistration.Controllers
 {
+    // Shanice - Initialize Enrolling Comtroller
     public class EnrollingController : Controller
     {
         private readonly UserManager<IdentityUser> _userManager;
@@ -19,10 +20,14 @@ namespace TeamCSharpRegistration.Controllers
             _userManager = userManager;
             context = ctx;
         }
+
+        // Shanice - Code action for enrolled classes.
+        // Shanice & Marshall - Reworked to accomodate routing for remove function.
         public IActionResult EnrolledClasses(int sectionID, string actionType)
         {
             string userID = _userManager.GetUserId(HttpContext.User);
 
+            // Shanice - Implement enroll function
             if (actionType == "enroll")
             {
 
@@ -91,6 +96,7 @@ namespace TeamCSharpRegistration.Controllers
 
 
             }
+            // Marshall - Setup remove function
             else if (actionType == "remove")
             {
                 List<EnrolledClass> currentEnrolledClasses = new List<EnrolledClass>();
@@ -151,10 +157,7 @@ namespace TeamCSharpRegistration.Controllers
 
                 return View(sectionViewModels);
 
-
-
-                return View();
-            } else
+            } else // Shanice - Setup default view of enrolled classes.
             {
                 List<EnrolledClass> enrolledClasses = new List<EnrolledClass>();
 

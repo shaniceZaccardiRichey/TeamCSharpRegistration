@@ -116,8 +116,8 @@
 </style>
 
 <!-- Shanice - Established ViewCart View. Currently being used to validate data sent to view from link routing. (Work in Progress)-->
-<h1>ViewCart Test</h1>
-<p>@ViewBag.userid</p>
+<h1>My Cart</h1>
+
 
 
 <div class="section-list">
@@ -131,6 +131,7 @@
                 @s.Instructor.LastName, @s.Instructor.FirstName @s.Instructor.MiddleName
             </div><div class="section-seats">
                 @(s.Section.Seats - s.Section.StudentsEnrolled) Seats<br />
+            <!-- Shanice & Marshall - reworked link to accept action parameter-->
                 <a asp-controller="Cart" asp-action="ViewCart" asp-route-sectionID="@s.Section.ID" asp-route-actionType="remove">
                     Remove
                 </a>
@@ -202,6 +203,7 @@
     }
 </div>
 
+<!-- Shanice - Added option to enroll in cart classes-->
 <a asp-controller="Enrolling" asp-action="EnrolledClasses" asp-route-actionType="enroll">
     Enroll
 </a>

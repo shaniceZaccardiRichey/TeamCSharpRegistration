@@ -103,7 +103,7 @@ namespace TeamCSharpRegistration.Controllers
         [Authorize]
         public IActionResult ViewCart(int sectionID, string actionType)
         {
-
+            // Shanice - Reworked to accomodate routing for removal from cart.
             if (actionType != "view")
             {
                 // Shanice - Complete backend for add to cart feature.
@@ -120,6 +120,7 @@ namespace TeamCSharpRegistration.Controllers
                     .Where(s => s.SectionID == sectionID)
                     .ToList();
 
+                // Shanice & Marshall - new routing for action options
                 if (actionType == "add") {
                     if (initialCartItems.Count == 0)
                     {
@@ -158,7 +159,7 @@ namespace TeamCSharpRegistration.Controllers
                     .Where(c => c.UserId == userID)
                     .ToList();
 
-                //Create list of View Models to send to View.
+                //Shanice - Create list of View Models to send to View.
                 List<SectionViewModel> sectionViewModels = new List<SectionViewModel>();
 
                 foreach (CartItem c in cartItems)
