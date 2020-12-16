@@ -1,4 +1,4 @@
-﻿
+﻿@model List<SectionViewModel>
 @{
     ViewData["Title"] = "EnrolledClasses";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -6,3 +6,202 @@
 
 <h1>EnrolledClasses</h1>
 
+<style>
+    html {
+        font-family: sans-serif;
+    }
+
+    .section-list {
+        width: 100%;
+        margin: none;
+        font-size: 1.75em;
+    }
+
+        .section-list div {
+            margin: none;
+        }
+
+    .section-title-row {
+        font-size: 1.2rem;
+        display: flex;
+        flex-wrap: nowrap;
+        width: 100%;
+        margin: none;
+        border-top: 2px solid #333333;
+        border-left: 2px solid #333333;
+        border-right: 2px solid #333333;
+        background-color: #aaaaaa;
+    }
+
+        .section-title-row > * {
+            margin: none;
+            padding: 0.25em;
+        }
+
+    .section-meeting-row {
+        background-color: #bbbbbb;
+        width: 100%;
+        border-left: 2px solid #333333;
+        border-right: 2px solid #333333;
+        display: flex;
+        justify-content: flex-end;
+    }
+
+    .section-entry:nth-child(even) .section-title-row,
+    .section-entry:nth-child(even) .section-meeting-row {
+        background-color: #e2e2e2;
+    }
+
+    .section-title {
+        width: 55%;
+    }
+
+    header ~ .container {
+        padding: 2%;
+    }
+
+    .section-instructor {
+        width: 30%;
+    }
+
+    .section-seats {
+        text-align: right;
+        width: 15%;
+        direction: rtl;
+    }
+
+    .section-meeting-deadspace {
+        width: .5em;
+        display: inline-block;
+    }
+
+    .section-meeting-container {
+        display: inline-block;
+        background-color: #ffffff;
+        width: calc(100% - .5em);
+    }
+
+        .section-meeting-container table {
+            border-top: 2px solid #333333;
+            border-left: 2px solid #333333;
+            background-color: #ffffff;
+            width: 100%;
+        }
+
+            .section-meeting-container table * {
+                text-align: left;
+                padding: 0.25em;
+                box-sizing: border-box;
+                font-size: 1rem;
+            }
+
+    .section-meeting-type {
+        background-color: #ffffff;
+        width: 60%;
+    }
+
+    .section-meeting-days {
+        font-weight: 600;
+        text-align: right;
+        background-color: #ffffff;
+        width: 15%
+    }
+
+    .section-meeting-times {
+        background-color: #ffffff;
+    }
+
+    .section-meeting-location {
+        width: 40%;
+        background-color: #ffffff;
+    }
+</style>
+
+<!-- Shanice - Established ViewCart View. Currently being used to validate data sent to view from link routing. (Work in Progress)-->
+<h1>ViewCart Test</h1>
+<p>@ViewBag.userid</p>
+
+
+<div class="section-list">
+    @foreach (SectionViewModel s in Model)
+    {
+        <div class="section-entry">
+            <div class="section-title-row">
+                <div class="section-title">
+                    @s.Course.Title
+                </div><div class="section-instructor">
+                    @s.Instructor.LastName, @s.Instructor.FirstName @s.Instructor.MiddleName
+                </div><div class="section-seats">
+                    @(s.Section.Seats - s.Section.StudentsEnrolled) Seats<br />
+                    <a asp-controller="Cart" asp-action="ViewCart" asp-route-sectionID="@s.Section.ID" asp-route-actionType="remove">
+                        Remove
+                    </a>
+                </div>
+            </div>
+            <div class="section-meeting-row">
+                @{List<Meeting> meetings = new List<Meeting>();
+                    foreach (Meeting m in s.Meetings)
+                    {
+                        int index = meetings.FindIndex(n => (n.Room == m.Room) && (n.Building == m.Building)
+                            && (n.Campus == m.Campus) && (n.EndDate == m.EndDate) && (n.EndTime == m.EndTime)
+                            && (n.StartDate == m.StartDate) && (n.StartTime == m.StartTime) && (n.Type == m.Type));
+                        if (index >= 0)
+                        {
+                            meetings[index].Day += m.Day;
+                        }
+                        else
+                        {
+                            meetings.Add(m);
+                        }
+                    }
+
+
+
+                    <div class="section-meeting-container">
+                        @foreach (Meeting m in meetings)
+                        {
+                            <table>
+
+                                <tr>
+                                    <td colspan="2" class="section-meeting-type">
+                                        @m.Type
+                                    </td>
+                                    @if (String.IsNullOrEmpty(m.Building) && String.IsNullOrEmpty(m.Room))
+                                    {
+                                        <td rowspan="2" class="section-meeting-location">
+                                            @m.Campus.Name
+                                        </td>
+                                    }
+                                    else
+                                    {
+                                        <td rowspan="2" class="section-meeting-location">
+                                            @m.Campus.Name -@m.Building @m.Room
+                                        </td>
+                                    }
+                                </tr>
+                                <tr>
+                                    <td class="section-meeting-days">
+                                        @m.Day
+                                    </td>
+                                    @if ((m.StartTime.Hour == 0) && (m.StartTime.Minute == 0) && (m.EndTime.Hour == 0) && (m.EndTime.Minute == 1))
+                                    {
+                                        <td class="section-meeting-times">
+                                            No meeting
+                                        </td>
+                                    }
+                                    else
+                                    {
+                                        <td class="section-meeting-times">
+                                            @String.Format("{0:h:mm\u00A0tt}-\u200b{1:h:mm\u00A0tt}", m.StartTime, m.EndTime)
+                                        </td>
+                                    }
+                                </tr>
+
+                            </table>
+                        }
+                    </div>
+                }
+            </div>
+        </div>
+    }
+</div>
