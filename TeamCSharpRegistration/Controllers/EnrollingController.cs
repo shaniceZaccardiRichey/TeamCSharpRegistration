@@ -91,9 +91,48 @@ namespace TeamCSharpRegistration.Controllers
 
 
             }
-            else
+            else if (actionType == "remove")
             {
                 return View();
+            }else
+            {
+                List<EnrolledClass> enrolledClasses = new List<EnrolledClass>();
+
+                enrolledClasses = context.EnrolledClasses
+                    .Where(c => c.UserId == userID)
+                    .ToList();
+
+                List<SectionViewModel> sectionViewModels = new List<SectionViewModel>();
+
+                foreach (EnrolledClass e in enrolledClasses)
+                {
+                    SectionViewModel sectionViewModel = new SectionViewModel();
+
+                    sectionViewModel.Section = context.Sections
+                        .Where(s => s.ID == e.SectionID)
+                        .ToList()[0];
+
+                    sectionViewModel.Course = context.Courses
+                        .Where(i => i.ID == sectionViewModel.Section.CourseID)
+                        .ToList()[0];
+
+                    sectionViewModel.Instructor = context.Instructors
+                        .Where(i => i.ID == sectionViewModel.Section.InstructorID)
+                        .ToList()[0];
+
+                    sectionViewModel.Campus = context.Campuses
+                        .Where(i => i.ID == sectionViewModel.Section.CampusID)
+                        .ToList()[0];
+
+                    sectionViewModel.Meetings = context.Meetings
+                        .Where(s => s.SectionID == sectionViewModel.Section.ID)
+                        .ToList();
+
+                    sectionViewModels.Add(sectionViewModel);
+                }
+
+
+                return View(sectionViewModels);
             }
 
 
