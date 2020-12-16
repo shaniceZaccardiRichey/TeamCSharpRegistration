@@ -117,11 +117,7 @@
     }
 </style>
 
-<!-- Shanice - Established ViewCart View. Currently being used to validate data sent to view from link routing. (Work in Progress)-->
-<h1>ViewCart Test</h1>
-<p>@ViewBag.userid</p>
-
-
+<!-- Shanice - Established EnrolledClasses View. -->
 <div class="section-list">
     @foreach (SectionViewModel s in Model)
     {
@@ -133,8 +129,8 @@
                     @s.Instructor.LastName, @s.Instructor.FirstName @s.Instructor.MiddleName
                 </div><div class="section-seats">
                     @(s.Section.Seats - s.Section.StudentsEnrolled) Seats<br />
-                    <a asp-controller="Cart" asp-action="ViewCart" asp-route-sectionID="@s.Section.ID" asp-route-actionType="remove">
-                        Remove
+                    <a asp-controller="Enrolling" asp-action="EnrolledClasses" asp-route-sectionID="@s.Section.ID" asp-route-actionType="remove">
+                        Drop
                     </a>
                 </div>
             </div>
